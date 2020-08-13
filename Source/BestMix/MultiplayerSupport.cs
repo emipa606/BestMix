@@ -1,53 +1,46 @@
-﻿using System;
-using System.Reflection;
-using HarmonyLib;
+﻿using HarmonyLib;
 using Multiplayer.API;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Reflection;
 using Verse;
 
 namespace BestMix
 {
-	// Token: 0x0200000A RID: 10
-	[StaticConstructorOnStartup]
-	internal static class MultiplayerSupport
-	{
-		// Token: 0x0600003B RID: 59 RVA: 0x00004E38 File Offset: 0x00003038
-		static MultiplayerSupport()
-		{
-			if (!MP.enabled)
-			{
-				return;
-			}
-			MP.RegisterSyncMethod(typeof(BMBillUtility), "SetBMixBillMode", null);
-			MP.RegisterSyncMethod(typeof(CompBestMix), "SetBMixMode", null);
-			MethodInfo[] array = new MethodInfo[]
-			{
-				AccessTools.Method(typeof(BestMixUtility), "RNDFloat", null, null)
-			};
-			for (int i = 0; i < array.Length; i++)
-			{
-				MultiplayerSupport.FixRNG(array[i]);
-			}
-		}
+    [StaticConstructorOnStartup]
+    static class MultiplayerSupport
+    {
+        static Harmony harmony = new Harmony("rimworld.pelador.bestmix.multiplayersupport");
 
-		// Token: 0x0600003C RID: 60 RVA: 0x00004EBE File Offset: 0x000030BE
-		private static void FixRNG(MethodInfo method)
-		{
-			MultiplayerSupport.harmony.Patch(method, new HarmonyMethod(typeof(MultiplayerSupport), "FixRNGPre", null), new HarmonyMethod(typeof(MultiplayerSupport), "FixRNGPos", null), null, null);
-		}
+        static MultiplayerSupport()
+        {
+            if (!MP.enabled) return;
 
-		// Token: 0x0600003D RID: 61 RVA: 0x00004EF8 File Offset: 0x000030F8
-		private static void FixRNGPre()
-		{
-			Rand.PushState(Find.TickManager.TicksAbs);
-		}
+            //SyncMethods
+            MP.RegisterSyncMethod(typeof(BMBillUtility), nameof(BMBillUtility.SetBMixBillMode));
+            MP.RegisterSyncMethod(typeof(CompBestMix), nameof(CompBestMix.SetBMixMode));
 
-		// Token: 0x0600003E RID: 62 RVA: 0x00004F09 File Offset: 0x00003109
-		private static void FixRNGPos()
-		{
-			Rand.PopState();
-		}
+            // Add all Methods where there is Rand calls here
+            var methods = new[] {
+            AccessTools.Method(typeof(BestMixUtility), nameof(BestMixUtility.RNDFloat))
+        };
+            foreach (var method in methods)
+            {
+                FixRNG(method);
+            }
+        }
 
-		// Token: 0x04000007 RID: 7
-		private static readonly Harmony harmony = new Harmony("rimworld.pelador.bestmix.multiplayersupport");
-	}
+        static void FixRNG(MethodInfo method)
+        {
+            harmony.Patch(method,
+                prefix: new HarmonyMethod(typeof(MultiplayerSupport), nameof(FixRNGPre)),
+                postfix: new HarmonyMethod(typeof(MultiplayerSupport), nameof(FixRNGPos))
+            );
+        }
+
+        static void FixRNGPre() => Rand.PushState(Find.TickManager.TicksAbs);
+        static void FixRNGPos() => Rand.PopState();
+    }
 }

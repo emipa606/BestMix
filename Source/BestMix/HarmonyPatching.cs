@@ -1,21 +1,21 @@
-﻿using System;
-using System.Reflection;
-using BestMix.Patches;
-using HarmonyLib;
+﻿using System.Reflection;
 using Verse;
+using HarmonyLib;
+using BestMix.Patches;
 
 namespace BestMix
 {
-	// Token: 0x02000009 RID: 9
-	[StaticConstructorOnStartup]
-	internal static class HarmonyPatching
-	{
-		// Token: 0x0600003A RID: 58 RVA: 0x00004E1C File Offset: 0x0000301C
-		static HarmonyPatching()
-		{
-			Harmony harmony = new Harmony("com.Pelador.Rimworld.BestMix");
-			harmony.PatchAll(Assembly.GetExecutingAssembly());
-			HarmonyPatchTool.PatchAll(harmony);
-		}
-	}
+    [StaticConstructorOnStartup]
+    static class HarmonyPatching
+    {
+        static HarmonyPatching()
+        {
+            var harmony = new Harmony("com.Pelador.Rimworld.BestMix");
+#if DEBUG
+            Harmony.DEBUG = true;
+#endif
+            harmony.PatchAll(Assembly.GetExecutingAssembly());
+            HarmonyPatchTool.PatchAll(harmony);
+        }
+    }
 }
