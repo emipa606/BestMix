@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Best Mix (Continued)</name>
+  <packageId>Mlie.BestMix</packageId>
+  <author>pelador</author>
+  <url>https://github.com/emipa606/BestMix</url>
+  <supportedVersions>
+    <li>1.1</li>
+    <li>1.2</li>
+  </supportedVersions>
+  <modDependencies>
+    <li>
+      <packageId>brrainz.harmony</packageId>
+      <displayName>Harmony</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+      <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+    </li>
+  </modDependencies>
+  <loadAfter>
+    <li>brrainz.harmony</li>
+  </loadAfter>
+  <description>Update of peladors mod
+https://steamcommunity.com/sharedfiles/filedetails/?id=2002971559
+
+[img]https://i.imgur.com/GYswkZ7.png[/img]
+
+Support-chat:
+https://invite.gg/mlie
+
+Non-steam version:
+https://github.com/emipa606/BestMix
+	
+--- Original Description ---
+Overview
+
+A QoL mod that allows variance in how benches select their ingredients.
+
+Mod details
+
+Vanilla has a default setting to search for ingredients by distance. With this mod you have the capability to use a gizmo on a work bench to change the criterion of that search to relate to alternative factors or elements. There are also optional individual best mix settings that you can set per bill. It will default to the gizmo value where these are not set.
+
+The criterion specified for use are as follows:
+
+Beauty Prettiest - highest beauty,
+Beauty Ugliest - least beauty,
+Insulate Cold - highest material property of cold insulation,
+Insulate Heat - highest material property of heat insulation,
+Item Ignition - most flammable,
+Item Damaged - least hit points against maximum (as applicable),
+Item Expiry - most rapid perishable items,
+Item Robust - most hit points vs max (as applicable),
+Mass Heaviest - most mass,
+Mass Lightest - least mass,
+Nearest (Vanilla) - default normal behaviour,
+Protect Blunt - highest property of protection against blunt damage,
+Protect Sharp - highest material property of protection against sharp damage,
+Random - random selection,
+Stock Fraction - least apportioned stack number against maximum,
+Stock Least - least amount of stock for item (mod options),
+Stock Most - most amount of stock for item (mod options),
+Temp. Coldest - ingredient in coldest ambient temperature,
+Temp. Warmest - ingredient in warmest ambient temperature,
+Value Cheapest - Least value,
+Value Expensive - Most value,
+Weapon Bluntest - material blunt damage factor,
+Weapon Sharpest - material sharp damage factor.
+
+And will default to the vanilla or nearest behaviour.
+
+Note if the ingredients used in the bill will have a similar property they will be equally compared. So some of the filters are more capable of general use, whereas others are more designed for specific types of ingredients where the filter has some relevancy to the end product based on the associated qualities.
+
+So if you now want your chef to randomly select ingredients from an organised room fridge you can do so. If you want to use the cheapest materials first, or the most damaged, you can do that also. Want to make clothes based on the best sharp protection or insulates against the cold, does that. Want to use the stacks that are not full first to keep things tidy this way, got that covered as well. And so on.
+
+Otherwise the bills will follow the normal filtering process as specified in the bill and within whatever radius is set for them. And would recommend using bill radius and trying to store objects more locally to their associated bench/bill giver.
+
+Please note there is a specific discussion for additional filter suggestions.
+
+Mod Notes
+
+Can be added and removed mid save.
+
+Has a mod option to turn off the functionality and also an option to limit the use to only benches that are recognised as a meal source (e.g. stoves, campfire), which will include modded benches that are also recognised as these kind of bill givers.
+
+Additional mod options are provided for the stock selection types, where you can modify the behaviour to include the whole map for evaluation as opposed to the bill radius and also whether items are stored in valid storage.
+
+Does not apply to pawn based bills.
+
+The mod will also set the maximum number of bills for a billgiver to 125. (Compatible with Better Workbench Management).
+
+Compatibility
+*** Subject to conversion ***
+
+Combat Extended - Adds Protect Electric - highest material property of protection from electric damage.
+Multiplayer - Native support
+
+Credits
+
+Madeline - a co-author, for the involved harmony transpiler work that makes this mod possible.
+https://steamcommunity.com/id/madeline1324/myworkshopfiles/?appid=294100
+
+LWM - helping with testing.
+https://steamcommunity.com/id/littlewhitemouse/myworkshopfiles/?appid=294100
+
+KV - "No max bills" allowing more bills for a billgiver. Added functionality (slightly modified).
+
+French translation - Rebecca
+
+Recommendations
+
+Deep Storage - to further improve the ingredient handling of bills by organising storage more conveniently and locally for their associated benches.
+
+
+(CC BY-NC-SA 4.0)</description>
+</ModMetaData>

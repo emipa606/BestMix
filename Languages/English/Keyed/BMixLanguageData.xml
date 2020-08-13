@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- Mod Settings -->
+  <BestMix.Name>Best Mix</BestMix.Name>
+  <BestMix.AllowBestMix>Allow Best Mix:</BestMix.AllowBestMix>
+  <BestMix.AllowMealMakersOnly>Allow meal makers only:</BestMix.AllowMealMakersOnly>
+  <BestMix.AllowBMBillSet>Allow Best Mix Bill setting</BestMix.AllowBMBillSet>
+  <BestMix.MapStock>Use the map rather than bill radius for evaluating stock levels:</BestMix.MapStock>
+  <BestMix.InStorage>Ingredients need to be in valid storage for evaluating stock levels:</BestMix.InStorage>
+  <BestMix.MaxBillFail>BestMix could not change the number of max bills for benches, this will be due to a mod conflict.</BestMix.MaxBillFail>
+  <BestMix.MaxBillDone>BestMix changed the maximum number of bills for billgivers to {0}</BestMix.MaxBillDone>
+  <BestMix.UseRadiusLimit>Use Region search radius limiter:</BestMix.UseRadiusLimit>
+  <BestMix.RadiusLimit>Radius for region search range limiter:</BestMix.RadiusLimit>
+  <!-- Settings Debug -->
+  <BestMix.IncludeRegionLimiter>Include additional limiter to Region range:</BestMix.IncludeRegionLimiter>
+  <BestMix.DebugSort>Debug the sort process:</BestMix.DebugSort>
+  <BestMix.DebugChosen>Debug chosen list:</BestMix.DebugChosen>
+  <BestMix.DebugFound>Debug found all ingredients:</BestMix.DebugFound>
+  <BestMix.DebugIgnore>Ignore log message limiter:</BestMix.DebugIgnore>
+  <BestMix.Chosen>Chosen</BestMix.Chosen>
+  <BestMix.NoChosen>No Chosen</BestMix.NoChosen>
+  <BestMix.NullChosen>Null Chosen</BestMix.NullChosen>
+  <BestMix.FoundAll>found ALL ingredients.</BestMix.FoundAll>
+  <BestMix.NotFoundAll>NOT found all ingredients.</BestMix.NotFoundAll>
+  <!--  Initialiser -->
+  <BestMix.SetupCount>[Best Mix] was applied to {0} work bench(es).</BestMix.SetupCount>
+  <!-- Content -->
+  <BestMix.ModeDistanceDIS>Nearest (Default)</BestMix.ModeDistanceDIS>
+  <BestMix.ModeDaysToRotDTR>Item Expiry</BestMix.ModeDaysToRotDTR>
+  <BestMix.ModeHealthHPT>Item Damaged</BestMix.ModeHealthHPT>
+  <BestMix.ModeHealthRHP>Item Robust</BestMix.ModeHealthRHP>
+  <BestMix.ModeValueVLC>Value Cheapest</BestMix.ModeValueVLC>
+  <BestMix.ModeValueVLE>Value Expensive</BestMix.ModeValueVLE>
+  <BestMix.ModeTemperatureTMP>Temp. Warmest</BestMix.ModeTemperatureTMP>
+  <BestMix.ModeTemperatureFRZ>Temp. Coldest</BestMix.ModeTemperatureFRZ>
+  <BestMix.ModeRandomRND>Random</BestMix.ModeRandomRND>
+  <BestMix.ModeFractionBIT>Stock Fraction</BestMix.ModeFractionBIT>
+  <BestMix.ModeStockMST>Stock Most</BestMix.ModeStockMST>
+  <BestMix.ModeStockLST>Stock Least</BestMix.ModeStockLST>
+  <BestMix.ModeBeautyBTY>Beauty Prettiest</BestMix.ModeBeautyBTY>
+  <BestMix.ModeBeautyUGY>Beauty Ugliest</BestMix.ModeBeautyUGY>
+  <BestMix.ModeMassHVY>Mass Heaviest</BestMix.ModeMassHVY>
+  <BestMix.ModeMassLGT>Mass Lightest</BestMix.ModeMassLGT>
+  <BestMix.ModeFlammableFLM>Item Ignition</BestMix.ModeFlammableFLM>
+  <BestMix.ModeProtectPTB>Protect Blunt</BestMix.ModeProtectPTB>
+  <BestMix.ModeProtectPTS>Protect Sharp</BestMix.ModeProtectPTS>
+  <BestMix.ModeProtectPTH>Protect Heat</BestMix.ModeProtectPTH>
+  <BestMix.ModeProtectPTE>Protect Electric</BestMix.ModeProtectPTE>
+  <BestMix.ModeInsulateINH>Insulate Heat</BestMix.ModeInsulateINH>
+  <BestMix.ModeInsulateINC>Insulate Cold</BestMix.ModeInsulateINC>
+  <BestMix.ModeWeaponWSP>Weapon Sharpest</BestMix.ModeWeaponWSP>
+  <BestMix.ModeWeaponWBT>Weapon Bluntest</BestMix.ModeWeaponWBT>
+  <BestMix.CurrentMode>Current Best Mix Selection: {0}</BestMix.CurrentMode>
+  <BestMix.SelectModeLabel>Best Mix</BestMix.SelectModeLabel>
+  <BestMix.SelectModeDesc>Used to select the Best Mix mode</BestMix.SelectModeDesc>
+  <BestMix.DoNothing>(No Change)</BestMix.DoNothing>
+  <BestMix.DebugLabel>Debug</BestMix.DebugLabel>
+  <BestMix.DebugDesc>Toggle logging potential ingredients listing</BestMix.DebugDesc>
+
+</LanguageData>

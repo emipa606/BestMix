@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- Mod Settings -->
+  <BestMix.Name>Best Mix</BestMix.Name>
+  <BestMix.AllowBestMix>Autorisez Best Mix:</BestMix.AllowBestMix>
+  <BestMix.AllowMealMakersOnly>Autorisez seulement les cuisiniers:</BestMix.AllowMealMakersOnly>
+  <BestMix.AllowBMBillSet>Autorisez les paramètres des commandes de Best Mix</BestMix.AllowBMBillSet>
+  <BestMix.MapStock>Utilisez la map plutôt que le rayon de commande pour évaluer les stocks:</BestMix.MapStock>
+  <BestMix.InStorage>Les ingrédients ont besoin d'être dans un stockage valide pour évaluer les stocks:</BestMix.InStorage>
+  <BestMix.MaxBillFail>BestMix n'a pas pu changer le nombre maximal de commandes pour les ateliers, surement à cause d'un conflit de mod.</BestMix.MaxBillFail>
+  <BestMix.MaxBillDone>BestMix a changé le nombre maximal de commande pour les artisans de {0}</BestMix.MaxBillDone>
+  <BestMix.UseRadiusLimit>Utilisez la limite du rayon de recherche de la région:</BestMix.UseRadiusLimit>
+  <BestMix.RadiusLimit>Rayon pour la limite du rayon de recherche de la région:</BestMix.RadiusLimit>
+  <!-- Settings Debug -->
+  <BestMix.IncludeRegionLimiter>Inclure d'autres limites à la distance de la zone:</BestMix.IncludeRegionLimiter>
+  <BestMix.DebugSort>Debug le processus de tri:</BestMix.DebugSort>
+  <BestMix.DebugChosen>Debug la liste choisie:</BestMix.DebugChosen>
+  <BestMix.DebugFound>Debug trouver tous les ingrédients:</BestMix.DebugFound>
+  <BestMix.DebugIgnore>Ignorez la limite du journal des messages:</BestMix.DebugIgnore>
+  <BestMix.Chosen>Choix</BestMix.Chosen>
+  <BestMix.NoChosen>Pas de Choix</BestMix.NoChosen>
+  <BestMix.NullChosen>Aucun choix</BestMix.NullChosen>
+  <BestMix.FoundAll>Trouver TOUS les ingrédients.</BestMix.FoundAll>
+  <BestMix.NotFoundAll>Ne PAS trouver tous les ingrédients.</BestMix.NotFoundAll>
+  <!--  Initialiser -->
+  <BestMix.SetupCount>[Best Mix] a été appliqué à {0} établi(s).</BestMix.SetupCount>
+  <!-- Content -->
+  <BestMix.ModeDistanceDIS>Plus Proche (Défaut)</BestMix.ModeDistanceDIS>
+  <BestMix.ModeDaysToRotDTR>Date d'expiration</BestMix.ModeDaysToRotDTR>
+  <BestMix.ModeHealthHPT>Plus Abîmer</BestMix.ModeHealthHPT>
+  <BestMix.ModeValueVLC>Valeur plus Abordable</BestMix.ModeValueVLC>
+  <BestMix.ModeValueVLE>Valeur plus Onéreuse</BestMix.ModeValueVLE>
+  <BestMix.ModeTemperatureTMP>Temp. plus Chaud</BestMix.ModeTemperatureTMP>
+  <BestMix.ModeTemperatureFRZ>Temp. plus Froid</BestMix.ModeTemperatureFRZ>
+  <BestMix.ModeRandomRND>Aléatoire</BestMix.ModeRandomRND>
+  <BestMix.ModeFractionBIT>Fraction du Stock</BestMix.ModeFractionBIT>
+  <BestMix.ModeStockMST>Plus en Stock</BestMix.ModeStockMST>
+  <BestMix.ModeStockLST>Moins en Stock</BestMix.ModeStockLST>
+  <BestMix.ModeBeautyBTY>Plus Jolie</BestMix.ModeBeautyBTY>
+  <BestMix.ModeBeautyUGY>Plus Moche</BestMix.ModeBeautyUGY>
+  <BestMix.ModeMassHVY>Plus Lourd</BestMix.ModeMassHVY>
+  <BestMix.ModeMassLGT>Plus Léger</BestMix.ModeMassLGT>
+  <BestMix.ModeFlammableFLM>Objet plus Infammable</BestMix.ModeFlammableFLM>
+  <BestMix.ModeProtectPTB>Protect. Contondant</BestMix.ModeProtectPTB>
+  <BestMix.ModeProtectPTS>Protect. Tranchant</BestMix.ModeProtectPTS>
+  <BestMix.ModeProtectPTH>Protect. Chaleur</BestMix.ModeProtectPTH>
+  <BestMix.ModeProtectPTE>Protect. Electrique</BestMix.ModeProtectPTE>
+  <BestMix.ModeInsulateINH>Isole de la Chaleur</BestMix.ModeInsulateINH>
+  <BestMix.ModeInsulateINC>Isole du Froid</BestMix.ModeInsulateINC>
+  <BestMix.ModeWeaponWSP>Arme Tranchante</BestMix.ModeWeaponWSP>
+  <BestMix.ModeWeaponWBT>Arme Contondante</BestMix.ModeWeaponWBT>
+  <BestMix.CurrentMode>Sélection Best Mix actuelle: {0}</BestMix.CurrentMode>
+  <BestMix.SelectModeLabel>Best Mix</BestMix.SelectModeLabel>
+  <BestMix.SelectModeDesc>Utiliser pour selectionner le mode Best Mix</BestMix.SelectModeDesc>
+  <BestMix.DoNothing>(Aucun changement)</BestMix.DoNothing>
+  <BestMix.DebugLabel>Debug</BestMix.DebugLabel>
+  <BestMix.DebugDesc>Toggle journal de la liste des ingrédients potentiels</BestMix.DebugDesc>
+</LanguageData>
