@@ -18,6 +18,8 @@
   </modDependencies>
   <loadAfter>
     <li>brrainz.harmony</li>
+    <li>CETeam.CombatExtended</li>
+    <li>JPT.SoftWarmBeds</li>
   </loadAfter>
   <description>Update of peladors mod
 https://steamcommunity.com/sharedfiles/filedetails/?id=2002971559
@@ -29,6 +31,8 @@ https://invite.gg/mlie
 
 Non-steam version:
 https://github.com/emipa606/BestMix
+
+- Softness icon by Freepik
 	
 --- Original Description ---
 Overview

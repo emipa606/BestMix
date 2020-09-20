@@ -1,9 +1,7 @@
-﻿using HarmonyLib;
-using RimWorld;
+﻿using RimWorld;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using UnityEngine;
 using Verse;
 using Verse.AI;
@@ -13,6 +11,7 @@ namespace BestMix
     public class BestMixUtility
     {
         public static string ProtElectricStat = "StuffPower_Armor_Electric";
+        public static string SoftnessStat = "Textile_Softness";
 
         public static bool BMixRegionIsInRange(Region r, Thing billGiver, Bill bill)
         {
@@ -144,14 +143,23 @@ namespace BestMix
 
         public static bool IsCEActive()
         {
-            string CEModName = "Combat Extended";
-            if (ModLister.HasActiveModWithName(CEModName))
+            string modName = "Combat Extended";
+            if (ModLister.HasActiveModWithName(modName))
             {
                 return true;
             }
             return false;
         }
 
+        public static bool IsSoftBedsActive()
+        {
+            string modName = "[JPT] Soft Warm Beds";
+            if (ModLister.HasActiveModWithName(modName))
+            {
+                return true;
+            }
+            return false;
+        }
         public static List<string> BMixModes()
         {
             List<string> list = new List<string>();
@@ -184,6 +192,10 @@ namespace BestMix
             }
             list.AddDistinct("INH");
             list.AddDistinct("INC");
+            if (IsSoftBedsActive())
+            {
+                list.AddDistinct("SOF");
+            }
             list.AddDistinct("WSP");
             list.AddDistinct("WBT");
             return list;
@@ -218,6 +230,7 @@ namespace BestMix
                 case "PTE": BMixIconPath += "ProtectElectric"; break;
                 case "INH": BMixIconPath += "InsulateHeat"; break;
                 case "INC": BMixIconPath += "InsulateCold"; break;
+                case "SOF": BMixIconPath += "Softness"; break;
                 case "WSP": BMixIconPath += "Sharpest"; break;
                 case "WBT": BMixIconPath += "Bluntest"; break;
                 default: BMixIconPath += "Nearest"; break;
@@ -254,6 +267,7 @@ namespace BestMix
                 case "PTE": ModeDisplay = "BestMix.ModeProtectPTE".Translate(); break;
                 case "INH": ModeDisplay = "BestMix.ModeInsulateINH".Translate(); break;
                 case "INC": ModeDisplay = "BestMix.ModeInsulateINC".Translate(); break;
+                case "SOF": ModeDisplay = "BestMix.ModeSoftnessSOF".Translate(); break;
                 case "WSP": ModeDisplay = "BestMix.ModeWeaponWSP".Translate(); break;
                 case "WBT": ModeDisplay = "BestMix.ModeWeaponWBT".Translate(); break;
                 default: ModeDisplay = "BestMix.ModeDistanceDIS".Translate(); break;
@@ -529,6 +543,20 @@ namespace BestMix
                         return (num.CompareTo(value));
                     };
                     break;
+                case "SOF":
+                    comparison = delegate (Thing t1, Thing t2)
+                    {
+                        float num = 0f;
+                        float value = 0f;
+                        StatDef softness = DefDatabase<StatDef>.GetNamed(SoftnessStat, false);
+                        if (softness != null)
+                        {
+                            num = t2.GetStatValue(softness);
+                            value = t1.GetStatValue(softness);
+                        }
+                        return (num.CompareTo(value));
+                    };
+                    break;
                 case "WSP":
                     comparison = delegate (Thing t1, Thing t2)
                     {
@@ -756,6 +784,10 @@ namespace BestMix
                     break;
                 case "INH": stat = thing.GetStatValue(StatDefOf.StuffPower_Insulation_Heat); break;
                 case "INC": stat = thing.GetStatValue(StatDefOf.StuffPower_Insulation_Cold); break;
+                case "SOF":
+                    StatDef softness = DefDatabase<StatDef>.GetNamed(SoftnessStat, false);
+                    if (softness != null) { stat = thing.GetStatValue(softness); }
+                    break;
                 case "WSP": stat = thing.GetStatValue(StatDefOf.SharpDamageMultiplier); break;
                 case "WBT": stat = thing.GetStatValue(StatDefOf.BluntDamageMultiplier); break;
                 default: stat = 0f; break;

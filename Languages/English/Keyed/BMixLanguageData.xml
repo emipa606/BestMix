@@ -48,6 +48,7 @@
   <BestMix.ModeProtectPTE>Protect Electric</BestMix.ModeProtectPTE>
   <BestMix.ModeInsulateINH>Insulate Heat</BestMix.ModeInsulateINH>
   <BestMix.ModeInsulateINC>Insulate Cold</BestMix.ModeInsulateINC>
+  <BestMix.ModeSoftnessSOF>Softness</BestMix.ModeSoftnessSOF>
   <BestMix.ModeWeaponWSP>Weapon Sharpest</BestMix.ModeWeaponWSP>
   <BestMix.ModeWeaponWBT>Weapon Bluntest</BestMix.ModeWeaponWBT>
   <BestMix.CurrentMode>Current Best Mix Selection: {0}</BestMix.CurrentMode>

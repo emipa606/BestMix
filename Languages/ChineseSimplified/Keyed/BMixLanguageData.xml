@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- Mod Settings -->
+  <BestMix.Name>Best Mix</BestMix.Name>
+  <BestMix.AllowBestMix>允许Best Mix:</BestMix.AllowBestMix>
+  <BestMix.AllowMealMakersOnly>只允许食物工作台:</BestMix.AllowMealMakersOnly>
+  <BestMix.AllowBMBillSet>允许Best Mix清单设置</BestMix.AllowBMBillSet>
+  <BestMix.MapStock>使用整个地图而不是清单半径来计算库存量:</BestMix.MapStock>
+  <BestMix.InStorage>原料需要在有效的储存区，以计算库存量:</BestMix.InStorage>
+  <BestMix.MaxBillFail>BestMix无法改变工作台的最大清单数，这是由于mod冲突。</BestMix.MaxBillFail>
+  <BestMix.MaxBillDone>BestMix将工作台的最大清单数改为 {0}</BestMix.MaxBillDone>
+  <BestMix.UseRadiusLimit>使用区域搜索半径限制:</BestMix.UseRadiusLimit>
+  <BestMix.RadiusLimit>区域搜索范围限制的半径:</BestMix.RadiusLimit>
+  <!-- Settings Debug -->
+  <BestMix.IncludeRegionLimiter>在区域范围中加入额外的限制:</BestMix.IncludeRegionLimiter>
+  <BestMix.DebugSort>调试排序程序:</BestMix.DebugSort>
+  <BestMix.DebugChosen>调试选择列表:</BestMix.DebugChosen>
+  <BestMix.DebugFound>调试所有发现的原料:</BestMix.DebugFound>
+  <BestMix.DebugIgnore>忽略纪录消息限制:</BestMix.DebugIgnore>
+  <BestMix.Chosen>选择</BestMix.Chosen>
+  <BestMix.NoChosen>没有选择</BestMix.NoChosen>
+  <BestMix.NullChosen>无效选择</BestMix.NullChosen>
+  <BestMix.FoundAll>发现所有原料</BestMix.FoundAll>
+  <BestMix.NotFoundAll>没有发现所有原料</BestMix.NotFoundAll>
+  <!--  Initialiser -->
+  <BestMix.SetupCount>[Best Mix] 应用于 {0} 个工作台.</BestMix.SetupCount>
+  <!-- Content -->
+  <BestMix.ModeDistanceDIS>距离最近的 (预设)</BestMix.ModeDistanceDIS>
+  <BestMix.ModeDaysToRotDTR>快过期的</BestMix.ModeDaysToRotDTR>
+  <BestMix.ModeHealthHPT>受损最严重的</BestMix.ModeHealthHPT>
+  <BestMix.ModeHealthRHP>最耐用的</BestMix.ModeHealthRHP>
+  <BestMix.ModeValueVLC>最便宜的</BestMix.ModeValueVLC>
+  <BestMix.ModeValueVLE>最昂贵的</BestMix.ModeValueVLE>
+  <BestMix.ModeTemperatureTMP>温度最暖的</BestMix.ModeTemperatureTMP>
+  <BestMix.ModeTemperatureFRZ>温度最冷的</BestMix.ModeTemperatureFRZ>
+  <BestMix.ModeRandomRND>随机</BestMix.ModeRandomRND>
+  <BestMix.ModeFractionBIT>有一些库存的</BestMix.ModeFractionBIT>
+  <BestMix.ModeStockMST>最多库存的</BestMix.ModeStockMST>
+  <BestMix.ModeStockLST>最少库存的</BestMix.ModeStockLST>
+  <BestMix.ModeBeautyBTY>最美的</BestMix.ModeBeautyBTY>
+  <BestMix.ModeBeautyUGY>最丑的</BestMix.ModeBeautyUGY>
+  <BestMix.ModeMassHVY>最重的</BestMix.ModeMassHVY>
+  <BestMix.ModeMassLGT>最轻的</BestMix.ModeMassLGT>
+  <BestMix.ModeFlammableFLM>最易燃的</BestMix.ModeFlammableFLM>
+  <BestMix.ModeProtectPTB>最抗钝器的</BestMix.ModeProtectPTB>
+  <BestMix.ModeProtectPTS>最抗利器的</BestMix.ModeProtectPTS>
+  <BestMix.ModeProtectPTH>最抗热的</BestMix.ModeProtectPTH>
+  <BestMix.ModeProtectPTE>最抗电的</BestMix.ModeProtectPTE>
+  <BestMix.ModeInsulateINH>最保暖的</BestMix.ModeInsulateINH>
+  <BestMix.ModeInsulateINC>最抗寒的</BestMix.ModeInsulateINC>
+  <BestMix.ModeWeaponWSP>利刃伤害最高的</BestMix.ModeWeaponWSP>
+  <BestMix.ModeWeaponWBT>钝击伤害最高的</BestMix.ModeWeaponWBT>
+  <BestMix.CurrentMode>当前的最佳选择模式: {0}</BestMix.CurrentMode>
+  <BestMix.SelectModeLabel>最佳选择</BestMix.SelectModeLabel>
+  <BestMix.SelectModeDesc>用于设置最佳选择模式</BestMix.SelectModeDesc>
+  <BestMix.DoNothing>(无变化)</BestMix.DoNothing>
+  <BestMix.DebugLabel>调试</BestMix.DebugLabel>
+  <BestMix.DebugDesc>切换纪录潜在原料列表</BestMix.DebugDesc>
+</LanguageData>
