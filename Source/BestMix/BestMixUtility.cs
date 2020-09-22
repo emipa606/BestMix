@@ -198,6 +198,8 @@ namespace BestMix
             }
             list.AddDistinct("WSP");
             list.AddDistinct("WBT");
+            list.AddDistinct("NUL");
+            list.AddDistinct("NUH");
             return list;
         }
 
@@ -233,6 +235,8 @@ namespace BestMix
                 case "SOF": BMixIconPath += "Softness"; break;
                 case "WSP": BMixIconPath += "Sharpest"; break;
                 case "WBT": BMixIconPath += "Bluntest"; break;
+                case "NUL": BMixIconPath += "NutritionLow"; break;
+                case "NUH": BMixIconPath += "NutritionHigh"; break;
                 default: BMixIconPath += "Nearest"; break;
             }
 
@@ -267,9 +271,11 @@ namespace BestMix
                 case "PTE": ModeDisplay = "BestMix.ModeProtectPTE".Translate(); break;
                 case "INH": ModeDisplay = "BestMix.ModeInsulateINH".Translate(); break;
                 case "INC": ModeDisplay = "BestMix.ModeInsulateINC".Translate(); break;
-                case "SOF": ModeDisplay = "BestMix.ModeSoftnessSOF".Translate(); break;
+                case "SOF": ModeDisplay = "BestMix.ModeTextileSOF".Translate(); break;
                 case "WSP": ModeDisplay = "BestMix.ModeWeaponWSP".Translate(); break;
                 case "WBT": ModeDisplay = "BestMix.ModeWeaponWBT".Translate(); break;
+                case "NUL": ModeDisplay = "BestMix.ModeFoodNUL".Translate(); break;
+                case "NUH": ModeDisplay = "BestMix.ModeFoodNUH".Translate(); break;
                 default: ModeDisplay = "BestMix.ModeDistanceDIS".Translate(); break;
             }
             return ModeDisplay;
@@ -573,6 +579,22 @@ namespace BestMix
                         return (num.CompareTo(value));
                     };
                     break;
+                case "NUL":
+                    comparison = delegate (Thing t1, Thing t2)
+                    {
+                        float num = 0f - t2.GetStatValue(StatDefOf.Nutrition);
+                        float value = 0f - t1.GetStatValue(StatDefOf.Nutrition);
+                        return (num.CompareTo(value));
+                    };
+                    break;
+                case "NUH":
+                    comparison = delegate (Thing t1, Thing t2)
+                    {
+                        float num = t2.GetStatValue(StatDefOf.Nutrition);
+                        float value = t1.GetStatValue(StatDefOf.Nutrition);
+                        return (num.CompareTo(value));
+                    };
+                    break;
                 default:
                     comparison = delegate (Thing t1, Thing t2)
                     {
@@ -790,6 +812,8 @@ namespace BestMix
                     break;
                 case "WSP": stat = thing.GetStatValue(StatDefOf.SharpDamageMultiplier); break;
                 case "WBT": stat = thing.GetStatValue(StatDefOf.BluntDamageMultiplier); break;
+                case "NUL": stat = (0f - thing.GetStatValue(StatDefOf.Nutrition)); break;
+                case "NUH": stat = thing.GetStatValue(StatDefOf.Nutrition); break;
                 default: stat = 0f; break;
             }
 
