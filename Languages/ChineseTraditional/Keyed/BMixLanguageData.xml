@@ -48,12 +48,16 @@
   <BestMix.ModeProtectPTE>最抗電的</BestMix.ModeProtectPTE>
   <BestMix.ModeInsulateINH>最保暖的</BestMix.ModeInsulateINH>
   <BestMix.ModeInsulateINC>最抗寒的</BestMix.ModeInsulateINC>
+  <BestMix.ModeTextileSOF>紡織品柔軟度</BestMix.ModeTextileSOF>
   <BestMix.ModeWeaponWSP>利刃傷害最高的</BestMix.ModeWeaponWSP>
   <BestMix.ModeWeaponWBT>鈍擊傷害最高的</BestMix.ModeWeaponWBT>
+  <BestMix.ModeFoodNUL>營養值最低的</BestMix.ModeFoodNUL>
+  <BestMix.ModeFoodNUH>營養值最高的</BestMix.ModeFoodNUH>
   <BestMix.CurrentMode>目前的最佳選擇模式: {0}</BestMix.CurrentMode>
   <BestMix.SelectModeLabel>最佳選擇</BestMix.SelectModeLabel>
   <BestMix.SelectModeDesc>用於設定最佳選擇模式</BestMix.SelectModeDesc>
   <BestMix.DoNothing>(無變化)</BestMix.DoNothing>
   <BestMix.DebugLabel>除錯</BestMix.DebugLabel>
   <BestMix.DebugDesc>切換紀錄潛在原料列表</BestMix.DebugDesc>
+
 </LanguageData>
