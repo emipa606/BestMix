@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
   <!-- Mod Settings -->
   <BestMix.Name>Best Mix</BestMix.Name>
@@ -48,12 +48,16 @@
   <BestMix.ModeProtectPTE>最抗电的</BestMix.ModeProtectPTE>
   <BestMix.ModeInsulateINH>最保暖的</BestMix.ModeInsulateINH>
   <BestMix.ModeInsulateINC>最抗寒的</BestMix.ModeInsulateINC>
+  <BestMix.ModeTextileSOF>织物柔软度</BestMix.ModeTextileSOF>
   <BestMix.ModeWeaponWSP>利刃伤害最高的</BestMix.ModeWeaponWSP>
   <BestMix.ModeWeaponWBT>钝击伤害最高的</BestMix.ModeWeaponWBT>
+  <BestMix.ModeFoodNUL>营养最低的</BestMix.ModeFoodNUL>
+  <BestMix.ModeFoodNUH>营养最高的</BestMix.ModeFoodNUH>
   <BestMix.CurrentMode>当前的最佳选择模式: {0}</BestMix.CurrentMode>
   <BestMix.SelectModeLabel>最佳选择</BestMix.SelectModeLabel>
   <BestMix.SelectModeDesc>用于设置最佳选择模式</BestMix.SelectModeDesc>
   <BestMix.DoNothing>(无变化)</BestMix.DoNothing>
   <BestMix.DebugLabel>调试</BestMix.DebugLabel>
   <BestMix.DebugDesc>切换纪录潜在原料列表</BestMix.DebugDesc>
+
 </LanguageData>
