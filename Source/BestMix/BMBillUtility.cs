@@ -12,7 +12,7 @@ namespace BestMix
     {
         public static string UseBMixMode(CompBestMix compBM, Thing billGiver, Bill bill)
         {
-            string mode = "DIS";
+            var mode = "DIS";
             if (compBM != null)
             {
                 mode = compBM.CurMode; // defaults to bench Gizmo
@@ -21,7 +21,7 @@ namespace BestMix
                     List<string> BillModeListing = compBM?.BillBMModes;
                     if (BillModeListing.Count > 0)
                     {
-                        foreach (string BillMode in BillModeListing)
+                        foreach (var BillMode in BillModeListing)
                         {
                             if (BillValuePart(BillMode) == bill.GetUniqueLoadID())
                             {
@@ -38,8 +38,8 @@ namespace BestMix
 
         public static Texture2D GetBillBMTex(Thing billGiver, Bill bill)
         {
-            string mode = GetBillBMMode(billGiver, bill);
-            string TexPath = "UI/BestMix/NONIcon";
+            var mode = GetBillBMMode(billGiver, bill);
+            var TexPath = "UI/BestMix/NONIcon";
 
             if (mode != "NON")
             {
@@ -55,13 +55,13 @@ namespace BestMix
 
         public static string GetBillBMMode(Thing billGiver, Bill bill)
         {
-            string mode = "NON";
+            var mode = "NON";
             if (billGiver != null && (!(billGiver is Pawn p)))
             {
                 CompBestMix CBM = billGiver.TryGetComp<CompBestMix>();
                 if (CBM != null)
                 {
-                    string billID = bill?.GetUniqueLoadID();
+                    var billID = bill?.GetUniqueLoadID();
                     if (billID != null)
                     {
                         if (CBM?.BillBMModes != null)
@@ -69,7 +69,7 @@ namespace BestMix
                             List<string> BillModes = CBM.BillBMModes;
                             if (BillModes.Count > 0)
                             {
-                                foreach (string BillMode in BillModes)
+                                foreach (var BillMode in BillModes)
                                 {
                                     if (BillValuePart(BillMode) == billID)
                                     {
@@ -99,7 +99,7 @@ namespace BestMix
 
         public static void DoBillModeSelMenu(CompBestMix CBM, Bill bill)
         {
-            List<FloatMenuOption> list = new List<FloatMenuOption>();
+            var list = new List<FloatMenuOption>();
 
             string text = "BestMix.DoNothing".Translate();
             list.Add(new FloatMenuOption(text, delegate
@@ -108,7 +108,7 @@ namespace BestMix
             },
             MenuOptionPriority.Default, null, null, 29f, null));
 
-            foreach (string mode in BestMixUtility.BMixModes())
+            foreach (var mode in BestMixUtility.BMixModes())
             {
                 text = BestMixUtility.GetBMixModeDisplay(mode);
                 list.Add(new FloatMenuOption(text, delegate
@@ -117,7 +117,7 @@ namespace BestMix
                 },
                 MenuOptionPriority.Default, null, null, 29f, null));
             }
-            List<FloatMenuOption> sortedlist = list.OrderBy(bm => bm.Label).ToList();
+            var sortedlist = list.OrderBy(bm => bm.Label).ToList();
             Find.WindowStack.Add(new FloatMenu(sortedlist));
         }
 
@@ -125,14 +125,14 @@ namespace BestMix
         {
             if ((CBM != null) && (bill != null))
             {
-                string billID = bill.GetUniqueLoadID();
-                List<string> newlist = new List<string>();
+                var billID = bill.GetUniqueLoadID();
+                var newlist = new List<string>();
                 if (CBM?.BillBMModes != null)
                 {
                     List<string> current = CBM?.BillBMModes;
                     if (current.Count > 0)
                     {
-                        foreach (string BillBMMode in current)
+                        foreach (var BillBMMode in current)
                         {
                             if (BillValuePart(BillBMMode) != billID)
                             {
@@ -155,8 +155,8 @@ namespace BestMix
             {
                 if (BillModes.Count > 0)
                 {
-                    List<string> newBillModes = new List<string>();
-                    List<string> billIDs = new List<string>();
+                    var newBillModes = new List<string>();
+                    var billIDs = new List<string>();
                     BillStack billStack = (billGiver as IBillGiver)?.BillStack;
                     if (billStack != null)
                     {
@@ -165,7 +165,7 @@ namespace BestMix
                         {
                             foreach (Bill bill in bills)
                             {
-                                string id = bill?.GetUniqueLoadID();
+                                var id = bill?.GetUniqueLoadID();
                                 if (id != null)
                                 {
                                     billIDs.AddDistinct<string>(id);
@@ -174,9 +174,9 @@ namespace BestMix
                         }
                     }
 
-                    foreach (string BillMode in BillModes)
+                    foreach (var BillMode in BillModes)
                     {
-                        if ((billIDs.Contains(BillValuePart(BillMode))))
+                        if (billIDs.Contains(BillValuePart(BillMode)))
                         {
                             newBillModes.AddDistinct<string>(BillMode);
                         }
@@ -195,20 +195,20 @@ namespace BestMix
 
         public static string NewBillBMMode(string id, string mode)
         {
-            return (id + ";" + mode);
+            return id + ";" + mode;
         }
 
         public static string BillValuePart(string value)
         {
             char[] divider = { ';' };
-            string[] segments = value.Split(divider);
+            var segments = value.Split(divider);
             return segments[0];
         }
 
         public static string ModeValuePart(string value)
         {
             char[] divider = { ';' };
-            string[] segments = value.Split(divider);
+            var segments = value.Split(divider);
             return segments[1];
         }
     }

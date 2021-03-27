@@ -17,10 +17,10 @@ namespace BestMix
                 Predicate<Thing> BMixValidator = BestMixUtility.BestMixValidator(P_pawn, P_billGiver, P_bill);
 
                 List<Thing> list = r.ListerThings.ThingsMatching(ThingRequest.ForGroup(ThingRequestGroup.HaulableEver));
-                for (int i = 0; i < list.Count; i++)
+                for (var i = 0; i < list.Count; i++)
                 {
                     Thing thing = list[i];
-                    if (!(BestMixUtility.BMIsForbidden(thing)))
+                    if (!BestMixUtility.BMIsForbidden(thing))
                     {
                         if (!ProcessedThings.Contains(thing) && ReachabilityWithinRegion.ThingFromRegionListerReachable(thing, r, PathEndMode.ClosestTouch, P_pawn)
                             && BMixValidator(thing) && (!thing.def.IsMedicine || (!(P_billGiver is Pawn))))
@@ -33,7 +33,7 @@ namespace BestMix
                 Lf_regionsProcessed++;
                 if (NewRelevantThings.Count > 0 && Lf_regionsProcessed > Lf_adjacentRegionsAvailable)
                 {
-                    Comparison<Thing> comparison = BestMixUtility.GetBMixComparer(P_billGiver, Lf_rootCell, P_bill, out bool rnd);
+                    Comparison<Thing> comparison = BestMixUtility.GetBMixComparer(P_billGiver, Lf_rootCell, P_bill, out var rnd);
                     //newRelevantThings.Sort(comparison);
                     RelevantThings.AddRange(NewRelevantThings);
                     if (rnd)
@@ -50,8 +50,8 @@ namespace BestMix
                     if (BestMixUtility.TryFindBestMixInSet(RelevantThings, P_bill, P_chosen, IngredientsOrdered))
                     {
                         Lf_foundAll = true;
-                        bool finishNow = BestMixUtility.BMixFinishedStatus(Lf_foundAll, P_billGiver, P_bill);
-                        if ((Lf_foundAll) && (finishNow))
+                        var finishNow = BestMixUtility.BMixFinishedStatus(Lf_foundAll, P_billGiver, P_bill);
+                        if (Lf_foundAll && finishNow)
                         {
                             BestMixUtility.DebugChosenList(P_billGiver, P_chosen);
                             BestMixUtility.DebugFoundAll(P_billGiver, Lf_foundAll);

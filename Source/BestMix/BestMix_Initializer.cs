@@ -19,10 +19,10 @@ namespace BestMix
             List<ThingDef> thingDefs = DefDatabase<ThingDef>.AllDefsListForReading;
             if (thingDefs.Count > 0)
             {
-                int num = 0;
+                var num = 0;
                 foreach (ThingDef thingDef in thingDefs)
                 {
-                    if ((IsBuildingClass(thingDef)) && (IsBillItem(thingDef)))
+                    if (IsBuildingClass(thingDef) && IsBillItem(thingDef))
                     {
                         if (TryAddBestMixComp(thingDef))
                         {
@@ -55,7 +55,7 @@ namespace BestMix
 
         public static bool IsBuildingClass(ThingDef def)
         {
-            bool bClass = false;
+            var bClass = false;
             if (def?.thingClass != null)
             {
                 Type chkClass = def.thingClass;
@@ -72,7 +72,7 @@ namespace BestMix
 
         public static bool IsBillItem(ThingDef def)
         {
-            bool billItem = false;
+            var billItem = false;
             if (def?.inspectorTabs != null)
             {
                 List<Type> inspects = def.inspectorTabs;

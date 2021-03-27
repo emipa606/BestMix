@@ -55,13 +55,13 @@ namespace BestMix.Patches
             var sf_newRelevantThings = AccessTools.Field(workGiverType, "newRelevantThings");
             var sf_ingredientsOrdered = AccessTools.Field(workGiverType, "ingredientsOrdered");
 
-            List<CodeInstruction> insts = instructions.ToList();
-            int instsLength = insts.Count;
-            for (int i = 0; i < instsLength; i++)
+            var insts = instructions.ToList();
+            var instsLength = insts.Count;
+            for (var i = 0; i < instsLength; i++)
             {
                 var inst = insts[i];
                 #region data field fetcher patch section
-                bool CodeEntry = i < instsLength - 2 && i > 0 && inst.opcode == OpCodes.Ldloc_0 && insts[i + 1].opcode == OpCodes.Ldftn && insts[i - 1].opcode == OpCodes.Call;
+                var CodeEntry = i < instsLength - 2 && i > 0 && inst.opcode == OpCodes.Ldloc_0 && insts[i + 1].opcode == OpCodes.Ldftn && insts[i - 1].opcode == OpCodes.Call;
                 if (CodeEntry)
                 { // entering IL_0217, ldloc.0 line 2205, before ldftn instance bool RimWorld.WorkGiver_DoBill/'<>c__DisplayClass20_0'::'<TryFindBestBillIngredients>b__3'(class Verse.Region)
                     #region local data field fetcher section

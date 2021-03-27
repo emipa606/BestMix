@@ -14,16 +14,16 @@ namespace BestMix
     {
         public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
-            if (!(Controller.Settings.AllowBMBillMaxSet))
+            if (!Controller.Settings.AllowBMBillMaxSet)
             {
                 yield break;
             }
-            int newMax = 125;
+            var newMax = 125;
             AccessTools.Property(typeof(BillStack), "Count").GetGetMethod();
-            List<CodeInstruction> instructionList = instructions.ToList<CodeInstruction>();
-            bool found = false;
+            var instructionList = instructions.ToList<CodeInstruction>();
+            var found = false;
             int num;
-            for (int i = 0; i < instructionList.Count; i = num)
+            for (var i = 0; i < instructionList.Count; i = num)
             {
                 CodeInstruction codeInstruction = instructionList[i];
                 if (instructionList[i].opcode == OpCodes.Ldc_I4_S && Convert.ToInt32(instructionList[i].operand) == 15)

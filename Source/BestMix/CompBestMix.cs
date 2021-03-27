@@ -34,7 +34,7 @@ namespace BestMix
             
             if (respawningAfterLoad)
             {
-                BMBillUtility.CheckBillBMValues(this, (parent as Thing), BillBMModes);
+                BMBillUtility.CheckBillBMValues(this, parent as Thing, BillBMModes);
             }
         }
 
@@ -42,8 +42,8 @@ namespace BestMix
         {
             if (BestMixUtility.IsValidForComp(parent))
             {
-                string ModeDisplay = BestMixUtility.GetBMixModeDisplay(CurMode);
-                return ("BestMix.CurrentMode".Translate(ModeDisplay));
+                var ModeDisplay = BestMixUtility.GetBMixModeDisplay(CurMode);
+                return "BestMix.CurrentMode".Translate(ModeDisplay);
             }
             return null;
         }
@@ -58,7 +58,7 @@ namespace BestMix
             {
                 if (parent.Spawned && parent.Faction == Faction.OfPlayer)
                 {
-                    string BMixIconPath = BestMixUtility.GetBMixIconPath(CurMode);
+                    var BMixIconPath = BestMixUtility.GetBMixIconPath(CurMode);
                     yield return new Command_Action
                     {
                         action = delegate
@@ -71,15 +71,15 @@ namespace BestMix
                         defaultDesc = "BestMix.SelectModeDesc".Translate(),
                         icon = ContentFinder<Texture2D>.Get(BMixIconPath)
                     };
-                    if ((Prefs.DevMode) && (Controller.Settings.DebugMaster))
+                    if (Prefs.DevMode && Controller.Settings.DebugMaster)
                     {
-                        string DebugIconPath = "UI/BestMix/DebugList";
+                        var DebugIconPath = "UI/BestMix/DebugList";
                         yield return new Command_Toggle
                         {
                             icon = ContentFinder<Texture2D>.Get(DebugIconPath),
                             defaultLabel = "BestMix.DebugLabel".Translate(),
                             defaultDesc = "BestMix.DebugDesc".Translate(),
-                            isActive = (() => (BMixDebug == true)),
+                            isActive = () => BMixDebug == true,
                             toggleAction = delegate
                             {
                                 ToggleDebug(BMixDebug);
@@ -99,7 +99,7 @@ namespace BestMix
 
         public void DoModeSelMenu()
         {
-            List<FloatMenuOption> list = new List<FloatMenuOption>();
+            var list = new List<FloatMenuOption>();
 
             string text = "BestMix.DoNothing".Translate();
             list.Add(new FloatMenuOption(text, delegate
@@ -108,7 +108,7 @@ namespace BestMix
             },
             MenuOptionPriority.Default, null, null, 29f, null));
 
-            foreach (string mode in BestMixUtility.BMixModes())
+            foreach (var mode in BestMixUtility.BMixModes())
             {
                 text = BestMixUtility.GetBMixModeDisplay(mode);
                 list.Add(new FloatMenuOption(text, delegate
@@ -117,7 +117,7 @@ namespace BestMix
                 },
                 MenuOptionPriority.Default, null, null, 29f, null));
             }
-            List<FloatMenuOption> sortedlist = list.OrderBy(bm => bm.Label).ToList();
+            var sortedlist = list.OrderBy(bm => bm.Label).ToList();
             Find.WindowStack.Add(new FloatMenu(sortedlist));
         }
 

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
   <!-- Mod Settings -->
   <BestMix.Name>Best Mix</BestMix.Name>
@@ -59,5 +59,4 @@
   <BestMix.DoNothing>(无变化)</BestMix.DoNothing>
   <BestMix.DebugLabel>调试</BestMix.DebugLabel>
   <BestMix.DebugDesc>切换纪录潜在原料列表</BestMix.DebugDesc>
-
 </LanguageData>

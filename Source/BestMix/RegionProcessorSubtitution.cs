@@ -20,7 +20,9 @@ namespace BestMix
         public static void Initialize(RegionProcessorSubtitution instance)
         {
             if (singleton != null)
+            {
                 throw new Exception("RegionProcessorSubtitution should be initialized once! you're calling initializer more than once.");
+            }
 
             singleton = instance;
         }
@@ -66,11 +68,11 @@ namespace BestMix
                                        List<IngredientCount> _ingredientsOrdered)
         {
             //get by harmony
-            this.ChosenIngThings = _chosenIngThings;
-            this.RelevantThings = _relevantThings;
-            this.ProcessedThings = _processedThings;
-            this.NewRelevantThings = _newRelevantThings;
-            this.IngredientsOrdered = _ingredientsOrdered;
+            ChosenIngThings = _chosenIngThings;
+            RelevantThings = _relevantThings;
+            ProcessedThings = _processedThings;
+            NewRelevantThings = _newRelevantThings;
+            IngredientsOrdered = _ingredientsOrdered;
         }
 
         // called by reflection, connected by Patch_WorkGiver_DoBill
@@ -84,14 +86,14 @@ namespace BestMix
                                       bool lf_foundAll)
         {
             //local fields  
-            this.Lf_adjacentRegionsAvailable = lf_adjacentRegionsAvailable;
-            this.Lf_regionsProcessed = lf_regionsProcessed;
-            this.Lf_rootCell = lf_rootCell;
-            this.P_bill = p_bill;
-            this.P_pawn = p_pawn;
-            this.P_billGiver = p_billGiver;
-            this.P_chosen = p_chosen;
-            this.Lf_foundAll = lf_foundAll;
+            Lf_adjacentRegionsAvailable = lf_adjacentRegionsAvailable;
+            Lf_regionsProcessed = lf_regionsProcessed;
+            Lf_rootCell = lf_rootCell;
+            P_bill = p_bill;
+            P_pawn = p_pawn;
+            P_billGiver = p_billGiver;
+            P_chosen = p_chosen;
+            Lf_foundAll = lf_foundAll;
         }
 
         protected abstract bool RegionProcessor(Region reg);
@@ -105,11 +107,11 @@ namespace BestMix
         {
             if (ApplyToParameter)
             {
-                bill = this.P_bill;
-                pawn = this.P_pawn;
-                billGiver = this.P_billGiver;
-                chosen = this.P_chosen;
-                foundAll = this.Lf_foundAll;
+                bill = P_bill;
+                pawn = P_pawn;
+                billGiver = P_billGiver;
+                chosen = P_chosen;
+                foundAll = Lf_foundAll;
             }
         }
     }

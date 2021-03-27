@@ -12,11 +12,14 @@ namespace BestMix
     [StaticConstructorOnStartup]
     static class MultiplayerSupport
     {
-        static Harmony harmony = new Harmony("rimworld.pelador.bestmix.multiplayersupport");
+        static readonly Harmony harmony = new Harmony("rimworld.pelador.bestmix.multiplayersupport");
 
         static MultiplayerSupport()
         {
-            if (!MP.enabled) return;
+            if (!MP.enabled)
+            {
+                return;
+            }
 
             //SyncMethods
             MP.RegisterSyncMethod(typeof(BMBillUtility), nameof(BMBillUtility.SetBMixBillMode));
@@ -40,7 +43,14 @@ namespace BestMix
             );
         }
 
-        static void FixRNGPre() => Rand.PushState(Find.TickManager.TicksAbs);
-        static void FixRNGPos() => Rand.PopState();
+        static void FixRNGPre()
+        {
+            Rand.PushState(Find.TickManager.TicksAbs);
+        }
+
+        static void FixRNGPos()
+        {
+            Rand.PopState();
+        }
     }
 }
