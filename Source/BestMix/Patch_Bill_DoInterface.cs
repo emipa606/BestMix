@@ -20,9 +20,9 @@ namespace BestMix
             MethodInfo EndGroupGUI = AccessTools.Method(typeof(GUI), "EndGroup");
             MethodInfo AddBMGUIPart = AccessTools.Method(typeof(Patch_Bill_DoInterface), "AddBMGUI", new[] { typeof(float), typeof(BillStack), typeof(Bill) });
 
-            List<CodeInstruction> instructionList = instructions.ToList<CodeInstruction>();
+            var instructionList = instructions.ToList<CodeInstruction>();
             var length = instructionList.Count;
-            for (int i = 0; i < length; i++)
+            for (var i = 0; i < length; i++)
             {
                 CodeInstruction codeInstruction = instructionList[i];
                 if (instructionList[i].opcode == OpCodes.Call && instructionList[i].Calls(EndGroupGUI))
@@ -60,16 +60,16 @@ namespace BestMix
 
         public static void AddBMGUI(float width, BillStack billstack, Bill bill)
         {
-            if (!(bill.recipe.IsSurgery))
+            if (!bill.recipe.IsSurgery)
             {
                 //Color baseColor = new Color(1f, 0.7f, 0.7f, 0.7f);
                 Color baseColor = Color.white;
                 //float offset = Controller.Settings.BillBMPos;
-                Rect rectBM = new Rect(width - (24f + 150f), 0f, 24f, 24f);
-                Texture2D BMTex = BMBillUtility.GetBillBMTex((billstack.billGiver as Thing), bill);
+                var rectBM = new Rect(width - (24f + 150f), 0f, 24f, 24f);
+                Texture2D BMTex = BMBillUtility.GetBillBMTex(billstack.billGiver as Thing, bill);
                 if (Widgets.ButtonImage(rectBM, BMTex, baseColor, baseColor * GenUI.SubtleMouseoverColor))
                 {
-                    BMBillUtility.SetBillBMVal((billstack.billGiver as Thing), bill);
+                    BMBillUtility.SetBillBMVal(billstack.billGiver as Thing, bill);
                     SoundDefOf.Click.PlayOneShotOnCamera();
                 }
             }

@@ -8,9 +8,11 @@ namespace BestMix
     {
         public void DoWindowContents(Rect canvas)
         {
-            float gap = 10f;
-            Listing_Standard listing_Standard = new Listing_Standard();
-            listing_Standard.ColumnWidth = canvas.width;
+            var gap = 10f;
+            var listing_Standard = new Listing_Standard
+            {
+                ColumnWidth = canvas.width
+            };
             listing_Standard.Begin(canvas);
             listing_Standard.Gap(gap);
             checked
@@ -60,7 +62,7 @@ namespace BestMix
                 }
 
                 // debug
-                if ((Prefs.DevMode) && (DebugMaster))
+                if (Prefs.DevMode && DebugMaster)
                 {
                     listing_Standard.Gap(gap * 2);
                     listing_Standard.CheckboxLabeled("BestMix.IncludeRegionLimiter".Translate(), ref IncludeRegionLimiter, null);
@@ -107,7 +109,7 @@ namespace BestMix
         public bool inStorage = true;
 
         public bool adjBillBMPos = false; // not saved
-        public float BillBMPos = (150f); // not saved
+        public float BillBMPos = 150f; // not saved
 
         public bool IncludeRegionLimiter = true;
         public bool DebugSort = false;

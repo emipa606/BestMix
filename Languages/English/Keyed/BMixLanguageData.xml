@@ -26,7 +26,7 @@
   <BestMix.SetupCount>[Best Mix] was applied to {0} work bench(es).</BestMix.SetupCount>
   <!-- Content -->
   <BestMix.ModeDistanceDIS>Nearest (Default)</BestMix.ModeDistanceDIS>
-  <BestMix.ModeDaysToRotDTR>Item Expiry</BestMix.ModeDaysToRotDTR>
+  <BestMix.ModeDaysToRotDTR>Item Expiry/Spoilage</BestMix.ModeDaysToRotDTR>
   <BestMix.ModeHealthHPT>Item Damaged</BestMix.ModeHealthHPT>
   <BestMix.ModeHealthRHP>Item Robust</BestMix.ModeHealthRHP>
   <BestMix.ModeValueVLC>Value Cheapest</BestMix.ModeValueVLC>
@@ -53,11 +53,11 @@
   <BestMix.ModeWeaponWBT>Weapon Bluntest</BestMix.ModeWeaponWBT>
   <BestMix.ModeFoodNUL>Nutrition Lowest</BestMix.ModeFoodNUL>
   <BestMix.ModeFoodNUH>Nutrition Highest</BestMix.ModeFoodNUH>
+  <BestMix.ModeFoodSPF>Spoils First</BestMix.ModeFoodSPF>
   <BestMix.CurrentMode>Current Best Mix Selection: {0}</BestMix.CurrentMode>
   <BestMix.SelectModeLabel>Best Mix</BestMix.SelectModeLabel>
   <BestMix.SelectModeDesc>Used to select the Best Mix mode</BestMix.SelectModeDesc>
   <BestMix.DoNothing>(No Change)</BestMix.DoNothing>
   <BestMix.DebugLabel>Debug</BestMix.DebugLabel>
   <BestMix.DebugDesc>Toggle logging potential ingredients listing</BestMix.DebugDesc>
-
 </LanguageData>

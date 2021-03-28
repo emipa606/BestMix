@@ -21,53 +21,59 @@
     <li>CETeam.CombatExtended</li>
     <li>JPT.SoftWarmBeds</li>
   </loadAfter>
-  <description>Update of peladors mod
+  <description>[img]https://i.imgur.com/WAEzk68.png[/img]
+Update of peladors mod
 https://steamcommunity.com/sharedfiles/filedetails/?id=2002971559
 
-[img]https://i.imgur.com/GYswkZ7.png[/img]
+- Added support for Softness from Soft Warm Beds
+https://steamcommunity.com/sharedfiles/filedetails/?id=1713295858
+- Added chinese languange, thanks NB
+- Added support for Nutrition-stat, High and Low
 
-Support-chat:
-https://invite.gg/mlie
+[img]https://i.imgur.com/7Gzt3Rg.png[/img]
 
-Non-steam version:
-https://github.com/emipa606/BestMix
-
-- Softness icon by Freepik
+[table]
+	[tr]
+		[td][url=https://invite.gg/Mlie][img]https://i.imgur.com/zdzzBrc.png[/img][/url][/td]
+		[td][url=https://github.com/emipa606/BestMix][img]https://i.imgur.com/kTkpTOE.png[/img][/url][/td]
+	[/tr]
+[/table]
 	
---- Original Description ---
-Overview
+[img]https://i.imgur.com/NOW7jU1.png[/img]
+
+[h1]Overview[/h1] V1.1
 
 A QoL mod that allows variance in how benches select their ingredients.
 
-Mod details
+[h1]Mod details[/h1]
 
 Vanilla has a default setting to search for ingredients by distance. With this mod you have the capability to use a gizmo on a work bench to change the criterion of that search to relate to alternative factors or elements. There are also optional individual best mix settings that you can set per bill. It will default to the gizmo value where these are not set.
 
 The criterion specified for use are as follows:
 
-Beauty Prettiest - highest beauty,
-Beauty Ugliest - least beauty,
-Insulate Cold - highest material property of cold insulation,
-Insulate Heat - highest material property of heat insulation,
-Item Ignition - most flammable,
-Item Damaged - least hit points against maximum (as applicable),
-Item Expiry - most rapid perishable items,
-Item Robust - most hit points vs max (as applicable),
-Mass Heaviest - most mass,
-Mass Lightest - least mass,
-Nearest (Vanilla) - default normal behaviour,
-Protect Blunt - highest property of protection against blunt damage,
-Protect Sharp - highest material property of protection against sharp damage,
-Random - random selection,
-Stock Fraction - least apportioned stack number against maximum,
-Stock Least - least amount of stock for item (mod options),
-Stock Most - most amount of stock for item (mod options),
-Temp. Coldest - ingredient in coldest ambient temperature,
-Temp. Warmest - ingredient in warmest ambient temperature,
-Value Cheapest - Least value,
-Value Expensive - Most value,
-Weapon Bluntest - material blunt damage factor,
-Weapon Sharpest - material sharp damage factor.
+[b]Beauty Prettiest[/b] - highest beauty,
+[b]Beauty Ugliest[/b] - least beauty, 
+[b]Insulate Cold[/b] - highest material property of cold insulation,
+[b]Insulate Heat[/b] - highest material property of heat insulation,
+[b]Item Ignition[/b] - most flammable,
+[b]Item Damaged[/b] - least hit points against maximum (as applicable), 
+[b]Item Expiry[/b] - most rapid perishable items,
+[b]Item Robust[/b] - most hit points vs max (as applicable),
+[b]Mass Heaviest[/b] - most mass, 
+[b]Mass Lightest[/b] - least mass,
+[b]Nearest[/b] (Vanilla) - default normal behaviour, 
+[b]Protect Blunt[/b] - highest property of protection against blunt damage,
+[b]Protect Sharp[/b] - highest material property of protection against sharp damage,
+[b]Random[/b] - random selection,
+[b]Stock Fraction[/b] - least apportioned stack number against maximum, 
+[b]Stock Least[/b] - least amount of stock for item (mod options),
+[b]Stock Most[/b] - most amount of stock for item (mod options),
+[b]Temp. Coldest[/b] - ingredient in coldest ambient temperature, 
+[b]Temp. Warmest[/b] - ingredient in warmest ambient temperature,
+[b]Value Cheapest[/b] - Least value, 
+[b]Value Expensive[/b] - Most value,
+[b]Weapon Bluntest[/b] - material blunt damage factor,
+[b]Weapon Sharpest[/b] - material sharp damage factor.
 
 And will default to the vanilla or nearest behaviour.
 
@@ -79,7 +85,7 @@ Otherwise the bills will follow the normal filtering process as specified in the
 
 Please note there is a specific discussion for additional filter suggestions.
 
-Mod Notes
+[h1]Mod Notes[/h1]
 
 Can be added and removed mid save.
 
@@ -91,28 +97,38 @@ Does not apply to pawn based bills.
 
 The mod will also set the maximum number of bills for a billgiver to 125. (Compatible with Better Workbench Management).
 
-Compatibility
-*** Subject to conversion ***
+[h1]Compatibility[/h1] *** Subject to conversion ***
 
-Combat Extended - Adds Protect Electric - highest material property of protection from electric damage.
-Multiplayer - Native support
+[b]Combat Extended[/b] - Adds Protect Electric - highest material property of protection from electric damage.
+[b]Multiplayer[/b] - Native support
 
-Credits
+[h1]Credits[/h1]
 
-Madeline - a co-author, for the involved harmony transpiler work that makes this mod possible.
-https://steamcommunity.com/id/madeline1324/myworkshopfiles/?appid=294100
+[url=https://steamcommunity.com/id/madeline1324/myworkshopfiles/?appid=294100]Madeline[/url] - a co-author, for the involved harmony transpiler work that makes this mod possible.
 
-LWM - helping with testing.
-https://steamcommunity.com/id/littlewhitemouse/myworkshopfiles/?appid=294100
+[url=https://steamcommunity.com/id/littlewhitemouse/myworkshopfiles/?appid=294100]LWM[/url] - helping with testing.
 
 KV - "No max bills" allowing more bills for a billgiver. Added functionality (slightly modified).
 
 French translation - Rebecca
 
-Recommendations
+[h1]Recommendations[/h1]
 
-Deep Storage - to further improve the ingredient handling of bills by organising storage more conveniently and locally for their associated benches.
+Deep Storage (V1.1 when converted) - to further improve the ingredient handling of bills by organising storage more conveniently and locally for their associated benches.
 
 
-(CC BY-NC-SA 4.0)</description>
+(CC BY-NC-SA 4.0)
+
+
+[img]https://i.imgur.com/Rs6T6cr.png[/img]
+[list]
+[*] See if the the error persists if you just have this mod and its requirements active.
+[*] If not, try adding your other mods until it happens again.
+[*] Post your error-log using [url=https://steamcommunity.com/workshop/filedetails/?id=818773962]HugsLib[/url] and command Ctrl+F12
+[*] For best support, please use the Discord-channel for error-reporting.
+[*] Do not report errors by making a discussion-thread, I get no notification of that.
+[*] If you have the solution for a problem, please post it to the GitHub repository.
+[/list]
+</description>
 </ModMetaData>
+
