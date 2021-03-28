@@ -26,7 +26,7 @@
   <BestMix.SetupCount>[Best Mix] 應用於 {0} 個工作台.</BestMix.SetupCount>
   <!-- Content -->
   <BestMix.ModeDistanceDIS>距離最近的 (預設)</BestMix.ModeDistanceDIS>
-  <BestMix.ModeDaysToRotDTR>快過期的</BestMix.ModeDaysToRotDTR>
+  <BestMix.ModeDaysToRotDTR>快過期/腐爛的</BestMix.ModeDaysToRotDTR>
   <BestMix.ModeHealthHPT>受損最嚴重的</BestMix.ModeHealthHPT>
   <BestMix.ModeHealthRHP>最耐用的</BestMix.ModeHealthRHP>
   <BestMix.ModeValueVLC>最便宜的</BestMix.ModeValueVLC>
@@ -53,6 +53,7 @@
   <BestMix.ModeWeaponWBT>鈍擊傷害最高的</BestMix.ModeWeaponWBT>
   <BestMix.ModeFoodNUL>營養值最低的</BestMix.ModeFoodNUL>
   <BestMix.ModeFoodNUH>營養值最高的</BestMix.ModeFoodNUH>
+  <BestMix.ModeFoodSPF>食物快變質的</BestMix.ModeFoodSPF>
   <BestMix.CurrentMode>目前的最佳選擇模式: {0}</BestMix.CurrentMode>
   <BestMix.SelectModeLabel>最佳選擇</BestMix.SelectModeLabel>
   <BestMix.SelectModeDesc>用於設定最佳選擇模式</BestMix.SelectModeDesc>

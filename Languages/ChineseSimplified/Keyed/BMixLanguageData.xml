@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
   <!-- Mod Settings -->
   <BestMix.Name>Best Mix</BestMix.Name>
@@ -26,7 +26,7 @@
   <BestMix.SetupCount>[Best Mix] 应用于 {0} 个工作台.</BestMix.SetupCount>
   <!-- Content -->
   <BestMix.ModeDistanceDIS>距离最近的 (预设)</BestMix.ModeDistanceDIS>
-  <BestMix.ModeDaysToRotDTR>快过期的</BestMix.ModeDaysToRotDTR>
+  <BestMix.ModeDaysToRotDTR>快过期/腐烂的</BestMix.ModeDaysToRotDTR>
   <BestMix.ModeHealthHPT>受损最严重的</BestMix.ModeHealthHPT>
   <BestMix.ModeHealthRHP>最耐用的</BestMix.ModeHealthRHP>
   <BestMix.ModeValueVLC>最便宜的</BestMix.ModeValueVLC>
@@ -53,6 +53,7 @@
   <BestMix.ModeWeaponWBT>钝击伤害最高的</BestMix.ModeWeaponWBT>
   <BestMix.ModeFoodNUL>营养最低的</BestMix.ModeFoodNUL>
   <BestMix.ModeFoodNUH>营养最高的</BestMix.ModeFoodNUH>
+  <BestMix.ModeFoodSPF>食物快腐烂的</BestMix.ModeFoodSPF>
   <BestMix.CurrentMode>当前的最佳选择模式: {0}</BestMix.CurrentMode>
   <BestMix.SelectModeLabel>最佳选择</BestMix.SelectModeLabel>
   <BestMix.SelectModeDesc>用于设置最佳选择模式</BestMix.SelectModeDesc>
