@@ -1,12 +1,12 @@
 ﻿using System.Reflection;
-using Verse;
-using HarmonyLib;
 using BestMix.Patches;
+using HarmonyLib;
+using Verse;
 
 namespace BestMix
 {
     [StaticConstructorOnStartup]
-    static class HarmonyPatching
+    internal static class HarmonyPatching
     {
         static HarmonyPatching()
         {

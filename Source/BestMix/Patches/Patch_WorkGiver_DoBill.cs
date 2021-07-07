@@ -1,24 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Reflection;
-using System.Reflection.Emit;
 using System.Linq;
-
+using System.Reflection.Emit;
 using HarmonyLib;
-
 using RimWorld;
 using Verse;
 
 namespace BestMix.Patches
 {
-    class Patch_WorkGiver_DoBill : CustomHarmonyPatch
+    internal class Patch_WorkGiver_DoBill : CustomHarmonyPatch
     {
         internal override void Patch(Harmony HMinstance)
         {
             try
             {
                 var original = AccessTools.Method(typeof(WorkGiver_DoBill), "TryFindBestBillIngredients");
-                var transpiler = AccessTools.Method(typeof(Patch_WorkGiver_DoBill), "Transpiler_TryFindBestBillIngredients");
+                var transpiler = AccessTools.Method(typeof(Patch_WorkGiver_DoBill),
+                    "Transpiler_TryFindBestBillIngredients");
                 HMinstance.Patch(original, null, null, new HarmonyMethod(transpiler));
             }
             catch (Exception ex)
@@ -27,19 +25,26 @@ namespace BestMix.Patches
             }
         }
 
-        static IEnumerable<CodeInstruction> Transpiler_TryFindBestBillIngredients(IEnumerable<CodeInstruction> instructions)
+        private static IEnumerable<CodeInstruction> Transpiler_TryFindBestBillIngredients(
+            IEnumerable<CodeInstruction> instructions)
         {
-            Type workGiverType = typeof(WorkGiver_DoBill);
-            FieldInfo RegionProcessorSubtitutionSingleton = AccessTools.Field(typeof(RegionProcessorSubtitution), nameof(RegionProcessorSubtitution.singleton));
+            var workGiverType = typeof(WorkGiver_DoBill);
+            var RegionProcessorSubtitutionSingleton = AccessTools.Field(typeof(RegionProcessorSubtitution),
+                nameof(RegionProcessorSubtitution.singleton));
             var LdvirtftnMethodBase = AccessTools.Method(typeof(RegionProcessorSubtitution), "RegionProcessor");
             var RegionProcessorType = AccessTools.TypeByName("RegionProcessor"); // hidden type
-            var RegionProcessorPointerCtor = AccessTools.Constructor(RegionProcessorType, new Type[] { typeof(object), typeof(IntPtr) });
+            var RegionProcessorPointerCtor =
+                AccessTools.Constructor(RegionProcessorType, new[] {typeof(object), typeof(IntPtr)});
             //does nameof() can make an error? IDK
-            MethodInfo FetchLocalFields = AccessTools.Method(typeof(RegionProcessorSubtitution), RegionProcessorSubtitution.FetchLocalFieldsMethodName);
-            MethodInfo FetchStaticFields = AccessTools.Method(typeof(RegionProcessorSubtitution), RegionProcessorSubtitution.FetchStaticFieldsMethodName);
-            MethodInfo UpdateData = AccessTools.Method(typeof(RegionProcessorSubtitution), RegionProcessorSubtitution.UpdateDataName);
+            var FetchLocalFields = AccessTools.Method(typeof(RegionProcessorSubtitution),
+                RegionProcessorSubtitution.FetchLocalFieldsMethodName);
+            var FetchStaticFields = AccessTools.Method(typeof(RegionProcessorSubtitution),
+                RegionProcessorSubtitution.FetchStaticFieldsMethodName);
+            var UpdateData = AccessTools.Method(typeof(RegionProcessorSubtitution),
+                RegionProcessorSubtitution.UpdateDataName);
             //h = hidden type
-            var c__DisplayClass20_0 = AccessTools.FirstInner(workGiverType, type => type.Name.Contains("<>c__DisplayClass20_0"));
+            var c__DisplayClass20_0 =
+                AccessTools.FirstInner(workGiverType, type => type.Name.Contains("<>c__DisplayClass20_0"));
             var h_adjacentRegionsAvailable = AccessTools.Field(c__DisplayClass20_0, "adjacentRegionsAvailable");
             var h_pawn = AccessTools.Field(c__DisplayClass20_0, "pawn");
             var h_regionsProcessed = AccessTools.Field(c__DisplayClass20_0, "regionsProcessed");
@@ -60,11 +65,13 @@ namespace BestMix.Patches
             for (var i = 0; i < instsLength; i++)
             {
                 var inst = insts[i];
-                #region data field fetcher patch section
-                var CodeEntry = i < instsLength - 2 && i > 0 && inst.opcode == OpCodes.Ldloc_0 && insts[i + 1].opcode == OpCodes.Ldftn && insts[i - 1].opcode == OpCodes.Call;
+
+                var CodeEntry = i < instsLength - 2 && i > 0 && inst.opcode == OpCodes.Ldloc_0 &&
+                                insts[i + 1].opcode == OpCodes.Ldftn && insts[i - 1].opcode == OpCodes.Call;
                 if (CodeEntry)
-                { // entering IL_0217, ldloc.0 line 2205, before ldftn instance bool RimWorld.WorkGiver_DoBill/'<>c__DisplayClass20_0'::'<TryFindBestBillIngredients>b__3'(class Verse.Region)
-                    #region local data field fetcher section
+                {
+                    // entering IL_0217, ldloc.0 line 2205, before ldftn instance bool RimWorld.WorkGiver_DoBill/'<>c__DisplayClass20_0'::'<TryFindBestBillIngredients>b__3'(class Verse.Region)
+
                     yield return new CodeInstruction(OpCodes.Ldsfld, RegionProcessorSubtitutionSingleton);
 
                     //prepare for Fetchdata method parameters
@@ -92,9 +99,7 @@ namespace BestMix.Patches
                     yield return new CodeInstruction(OpCodes.Ldc_I4_0); // index 7
 
                     yield return new CodeInstruction(OpCodes.Callvirt, FetchLocalFields);
-                    #endregion
 
-                    #region static data field fetcher section
                     yield return new CodeInstruction(OpCodes.Ldsfld, RegionProcessorSubtitutionSingleton);
 
                     //prepare for FetchStaticFields parameters
@@ -105,21 +110,20 @@ namespace BestMix.Patches
                     yield return new CodeInstruction(OpCodes.Ldsfld, sf_ingredientsOrdered);
 
                     yield return new CodeInstruction(OpCodes.Callvirt, FetchStaticFields);
-                    #endregion
 
-                    #region Creating new RegionProcessor
                     yield return new CodeInstruction(OpCodes.Ldsfld, RegionProcessorSubtitutionSingleton);
                     yield return new CodeInstruction(OpCodes.Dup);
                     yield return new CodeInstruction(OpCodes.Ldvirtftn, LdvirtftnMethodBase);
                     yield return new CodeInstruction(OpCodes.Newobj, RegionProcessorPointerCtor);
-                    #endregion
+
                     i += 2;
                     continue; // next line is IL_0223, stloc.1, line 2208
                 }
-                #endregion
 
-                if (inst.opcode == OpCodes.Call && inst.operand != null && inst.operand.ToString().Contains("BreadthFirstTraverse"))
-                { // entering IL_01C6 call, line 1881
+                if (inst.opcode == OpCodes.Call && inst.operand != null &&
+                    inst.operand.ToString().Contains("BreadthFirstTraverse"))
+                {
+                    // entering IL_01C6 call, line 1881
                     yield return inst;
 
                     yield return new CodeInstruction(OpCodes.Ldsfld, RegionProcessorSubtitutionSingleton);
@@ -165,5 +169,3 @@ ldfld / ldsfld 등으로 인스턴스 스택에 적재
 스택(하)
 ldvirtftn 말고 ldftn 을 사용했어야함...
 */
-
-

@@ -1,34 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using HarmonyLib;
-
-using Verse;
 using RimWorld;
-
-using BestMix.Patches;
+using Verse;
 
 namespace BestMix
 {
     public abstract class RegionProcessorSubtitution
     {
-        #region static methods and fields
         public static RegionProcessorSubtitution singleton;
         public static readonly string FetchLocalFieldsMethodName = nameof(FetchLocalFields);
         public static readonly string FetchStaticFieldsMethodName = nameof(FetchStaticFields);
+
         public static readonly string UpdateDataName = nameof(UpdateData);
-
-        public static void Initialize(RegionProcessorSubtitution instance)
-        {
-            if (singleton != null)
-            {
-                throw new Exception("RegionProcessorSubtitution should be initialized once! you're calling initializer more than once.");
-            }
-
-            singleton = instance;
-        }
-
-        #endregion
-
+        //protected WorkGiver_DoBill.DefCountList availableCounts { get; set; }
 
 
         protected List<ThingCount> ChosenIngThings { get; set; } // 바뀜
@@ -52,20 +36,14 @@ namespace BestMix
         //class option
         protected virtual bool ApplyToParameter { get; } = true;
         protected virtual bool CopyOnOverride { get; } = false;
-        //protected WorkGiver_DoBill.DefCountList availableCounts { get; set; }
-
-        protected RegionProcessorSubtitution()
-        {
-
-        }
 
         // called by reflection, connected by Patch_WorkGiver_DoBill
         // lf = local field, p = parameter
         private void FetchStaticFields(List<ThingCount> _chosenIngThings,
-                                       List<Thing> _relevantThings,
-                                       HashSet<Thing> _processedThings,
-                                       List<Thing> _newRelevantThings,
-                                       List<IngredientCount> _ingredientsOrdered)
+            List<Thing> _relevantThings,
+            HashSet<Thing> _processedThings,
+            List<Thing> _newRelevantThings,
+            List<IngredientCount> _ingredientsOrdered)
         {
             //get by harmony
             ChosenIngThings = _chosenIngThings;
@@ -77,13 +55,13 @@ namespace BestMix
 
         // called by reflection, connected by Patch_WorkGiver_DoBill
         private void FetchLocalFields(int lf_adjacentRegionsAvailable,
-                                      int lf_regionsProcessed,
-                                      IntVec3 lf_rootCell,
-                                      Bill p_bill,
-                                      Pawn p_pawn,
-                                      Thing p_billGiver,
-                                      List<ThingCount> p_chosen,
-                                      bool lf_foundAll)
+            int lf_regionsProcessed,
+            IntVec3 lf_rootCell,
+            Bill p_bill,
+            Pawn p_pawn,
+            Thing p_billGiver,
+            List<ThingCount> p_chosen,
+            bool lf_foundAll)
         {
             //local fields  
             Lf_adjacentRegionsAvailable = lf_adjacentRegionsAvailable;
@@ -100,10 +78,10 @@ namespace BestMix
 
         // called by reflection, connected by Patch_WorkGiver_DoBill
         private void UpdateData(ref Bill bill,
-                                ref Pawn pawn,
-                                ref Thing billGiver,
-                                ref List<ThingCount> chosen,
-                                ref bool foundAll)
+            ref Pawn pawn,
+            ref Thing billGiver,
+            ref List<ThingCount> chosen,
+            ref bool foundAll)
         {
             if (ApplyToParameter)
             {
@@ -113,6 +91,17 @@ namespace BestMix
                 chosen = P_chosen;
                 foundAll = Lf_foundAll;
             }
+        }
+
+        public static void Initialize(RegionProcessorSubtitution instance)
+        {
+            if (singleton != null)
+            {
+                throw new Exception(
+                    "RegionProcessorSubtitution should be initialized once! you're calling initializer more than once.");
+            }
+
+            singleton = instance;
         }
     }
 }

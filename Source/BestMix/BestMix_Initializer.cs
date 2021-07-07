@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using RimWorld;
 using Verse;
 
@@ -11,25 +9,28 @@ namespace BestMix
     {
         static BestMix_Initializer()
         {
-            LongEventHandler.QueueLongEvent(new Action(BestMix_Initializer.Setup), "LibraryStartup", false, null);
+            LongEventHandler.QueueLongEvent(Setup, "LibraryStartup", false, null);
         }
 
-        public static void Setup()
+        private static void Setup()
         {
-            List<ThingDef> thingDefs = DefDatabase<ThingDef>.AllDefsListForReading;
+            var thingDefs = DefDatabase<ThingDef>.AllDefsListForReading;
             if (thingDefs.Count > 0)
             {
                 var num = 0;
-                foreach (ThingDef thingDef in thingDefs)
+                foreach (var thingDef in thingDefs)
                 {
-                    if (IsBuildingClass(thingDef) && IsBillItem(thingDef))
+                    if (!IsBuildingClass(thingDef) || !IsBillItem(thingDef))
                     {
-                        if (TryAddBestMixComp(thingDef))
-                        {
-                            num++;
-                        }
+                        continue;
+                    }
+
+                    if (TryAddBestMixComp(thingDef))
+                    {
+                        num++;
                     }
                 }
+
                 if (num > 0)
                 {
                     string Msg = "BestMix.SetupCount".Translate(num.ToString());
@@ -41,54 +42,63 @@ namespace BestMix
             RegionProcessorSubtitution.Initialize(new RegionWork());
         }
 
-        public static bool TryAddBestMixComp(ThingDef def)
+        private static bool TryAddBestMixComp(ThingDef def)
         {
-            CompProperties_BestMix compProp_BestMix = def.comps.OfType<CompProperties_BestMix>().FirstOrDefault<CompProperties_BestMix>();
-            if (compProp_BestMix == null)
+            var compProp_BestMix = def.comps.OfType<CompProperties_BestMix>().FirstOrDefault();
+            if (compProp_BestMix != null)
             {
-                compProp_BestMix = new CompProperties_BestMix();
-                def.comps.Add(compProp_BestMix);
-                return true;
+                return false;
             }
-            return false;
+
+            compProp_BestMix = new CompProperties_BestMix();
+            def.comps.Add(compProp_BestMix);
+            return true;
         }
 
-        public static bool IsBuildingClass(ThingDef def)
+        private static bool IsBuildingClass(ThingDef def)
         {
             var bClass = false;
-            if (def?.thingClass != null)
+            if (def?.thingClass == null)
             {
-                Type chkClass = def.thingClass;
-                if (chkClass.IsClass)
-                {
-                    if (chkClass.IsSubclassOf(typeof(Building)))
-                    {
-                        bClass = true;
-                    }
-                }
+                return false;
             }
+
+            var chkClass = def.thingClass;
+            if (!chkClass.IsClass)
+            {
+                return false;
+            }
+
+            if (chkClass.IsSubclassOf(typeof(Building)))
+            {
+                bClass = true;
+            }
+
             return bClass;
         }
 
-        public static bool IsBillItem(ThingDef def)
+        private static bool IsBillItem(ThingDef def)
         {
-            var billItem = false;
-            if (def?.inspectorTabs != null)
+            if (def?.inspectorTabs == null)
             {
-                List<Type> inspects = def.inspectorTabs;
-                if (inspects.Count > 0)
+                return false;
+            }
+
+            var inspects = def.inspectorTabs;
+            if (inspects.Count <= 0)
+            {
+                return false;
+            }
+
+            foreach (var inspect in inspects)
+            {
+                if (inspect == typeof(ITab_Bills))
                 {
-                    foreach (Type inspect in inspects)
-                    {
-                        if (inspect == typeof(ITab_Bills))
-                        {
-                            billItem = true;
-                        }
-                    }
+                    return true;
                 }
             }
-            return billItem;
+
+            return false;
         }
     }
 }
-

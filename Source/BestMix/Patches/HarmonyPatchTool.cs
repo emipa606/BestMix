@@ -1,15 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using HarmonyLib;
-using System.Reflection;
 using System.Linq;
+using System.Reflection;
+using HarmonyLib;
 
 namespace BestMix.Patches
 {
-
     public static class HarmonyPatchTool
     {
-        static bool initialized = false;
+        private static bool initialized;
+
         public static void PatchAll(Harmony HMinstance)
         {
             EnsurePatchingOnlyOnce();
@@ -17,19 +16,19 @@ namespace BestMix.Patches
             try
             {
                 var CustomPatchTypes = from type in Assembly.GetAssembly(typeof(HarmonyPatchTool)).GetTypes()
-                                       where type.IsSubclassOf(typeof(CustomHarmonyPatch))
-                                       select type;
+                    where type.IsSubclassOf(typeof(CustomHarmonyPatch))
+                    select type;
 
 
                 foreach (var type in CustomPatchTypes)
                 {
                     var instance = Activator.CreateInstance(type) as CustomHarmonyPatch;
-                    instance.Patch(HMinstance);
+                    instance?.Patch(HMinstance);
                 }
             }
-            catch (Exception)
+            catch
             {
-
+                // ignored
             }
             finally
             {
@@ -37,7 +36,7 @@ namespace BestMix.Patches
             }
         }
 
-        static void EnsurePatchingOnlyOnce()
+        private static void EnsurePatchingOnlyOnce()
         {
             if (initialized)
             {

@@ -5,6 +5,13 @@ namespace BestMix
 {
     public class Controller : Mod
     {
+        public static Settings Settings;
+
+        public Controller(ModContentPack content) : base(content)
+        {
+            Settings = GetSettings<Settings>();
+        }
+
         public override string SettingsCategory()
         {
             return "BestMix.Name".Translate();
@@ -12,16 +19,7 @@ namespace BestMix
 
         public override void DoSettingsWindowContents(Rect canvas)
         {
-            Controller.Settings.DoWindowContents(canvas);
+            Settings.DoWindowContents(canvas);
         }
-
-        public Controller(ModContentPack content) : base(content)
-        {
-            Controller.Settings = base.GetSettings<Settings>();
-        }
-
-        public static Settings Settings;
     }
-
 }
-
