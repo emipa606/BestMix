@@ -1,5 +1,8 @@
 # Changelog for BestMix
 
+1.0.12.0 - Beauty filter had statOffsets instead of statFactors defined
+
+
 1.0.11.0 - Mod updated for 1.3 and passed autotests
 
 

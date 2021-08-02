@@ -552,17 +552,17 @@ namespace BestMix
                 case "MST":
                     comparison = delegate(Thing t1, Thing t2)
                     {
-                        var num = GetStockAmount(t2, billGiver, bill);
-                        var value = GetStockAmount(t1, billGiver, bill);
-                        return num.CompareTo(value);
+                        var thing2Amount = GetStockAmount(t2, billGiver, bill);
+                        var thing1Amount = GetStockAmount(t1, billGiver, bill);
+                        return thing2Amount.CompareTo(thing1Amount);
                     };
                     break;
                 case "LST":
                     comparison = delegate(Thing t1, Thing t2)
                     {
-                        var num = GetStockAmount(t1, billGiver, bill);
-                        var value = GetStockAmount(t2, billGiver, bill);
-                        return num.CompareTo(value);
+                        var thing1Amount = GetStockAmount(t1, billGiver, bill);
+                        var thing2Amount = GetStockAmount(t2, billGiver, bill);
+                        return thing1Amount.CompareTo(thing2Amount);
                     };
                     break;
                 case "RND":
@@ -577,53 +577,54 @@ namespace BestMix
                 case "BTY":
                     comparison = delegate(Thing t1, Thing t2)
                     {
-                        var num = t2.GetStatValue(StatDefOf.Beauty);
-                        if (t2.def?.stuffProps?.statOffsets != null)
+                        var thing1Beauty = t1.GetStatValue(StatDefOf.Beauty);
+                        var thing2Beauty = t2.GetStatValue(StatDefOf.Beauty);
+
+                        if (t1.def?.stuffProps?.statFactors != null)
                         {
-                            if (t2.def.stuffProps.statOffsets.StatListContains(StatDefOf.Beauty))
+                            if (t1.def.stuffProps.statFactors.StatListContains(StatDefOf.Beauty))
                             {
-                                num += t2.def.stuffProps.statOffsets.GetStatOffsetFromList(StatDefOf.Beauty);
+                                thing1Beauty += t1.def.stuffProps.statFactors.GetStatOffsetFromList(StatDefOf.Beauty);
                             }
                         }
 
-                        var value = t1.GetStatValue(StatDefOf.Beauty);
-                        if (t1.def?.stuffProps?.statOffsets == null)
+                        if (t2.def?.stuffProps?.statFactors == null)
                         {
-                            return num.CompareTo(value);
+                            return thing2Beauty.CompareTo(thing1Beauty);
                         }
 
-                        if (t1.def.stuffProps.statOffsets.StatListContains(StatDefOf.Beauty))
+                        if (t2.def.stuffProps.statFactors.StatListContains(StatDefOf.Beauty))
                         {
-                            value += t1.def.stuffProps.statOffsets.GetStatOffsetFromList(StatDefOf.Beauty);
+                            thing2Beauty += t2.def.stuffProps.statFactors.GetStatOffsetFromList(StatDefOf.Beauty);
                         }
 
-                        return num.CompareTo(value);
+                        return thing2Beauty.CompareTo(thing1Beauty);
                     };
                     break;
                 case "UGY":
                     comparison = delegate(Thing t1, Thing t2)
                     {
-                        var num = 0f - t2.GetStatValue(StatDefOf.Beauty);
-                        if (t2.def?.stuffProps?.statOffsets != null)
+                        var thing2Beauty = t2.GetStatValue(StatDefOf.Beauty);
+                        if (t2.def?.stuffProps?.statFactors != null)
                         {
-                            if (t2.def.stuffProps.statOffsets.StatListContains(StatDefOf.Beauty))
+                            if (t2.def.stuffProps.statFactors.StatListContains(StatDefOf.Beauty))
                             {
-                                num -= t2.def.stuffProps.statOffsets.GetStatOffsetFromList(StatDefOf.Beauty);
+                                thing2Beauty += t2.def.stuffProps.statFactors.GetStatOffsetFromList(StatDefOf.Beauty);
                             }
                         }
 
-                        var value = 0f - t1.GetStatValue(StatDefOf.Beauty);
-                        if (t1.def?.stuffProps?.statOffsets == null)
+                        var thing1Beauty = t1.GetStatValue(StatDefOf.Beauty);
+                        if (t1.def?.stuffProps?.statFactors == null)
                         {
-                            return num.CompareTo(value);
+                            return thing1Beauty.CompareTo(thing2Beauty);
                         }
 
-                        if (t1.def.stuffProps.statOffsets.StatListContains(StatDefOf.Beauty))
+                        if (t1.def.stuffProps.statFactors.StatListContains(StatDefOf.Beauty))
                         {
-                            value -= t1.def.stuffProps.statOffsets.GetStatOffsetFromList(StatDefOf.Beauty);
+                            thing1Beauty += t1.def.stuffProps.statFactors.GetStatOffsetFromList(StatDefOf.Beauty);
                         }
 
-                        return num.CompareTo(value);
+                        return thing1Beauty.CompareTo(thing2Beauty);
                     };
                     break;
                 case "HVY":
