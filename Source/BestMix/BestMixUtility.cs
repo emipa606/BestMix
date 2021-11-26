@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using BestMix.Patches;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -811,7 +812,21 @@ namespace BestMix
             return num;
         }
 
-
+        public static void Sort(List<Thing> availableThings, IntVec3 rootCell, Bill bill = null)
+        {
+            if (WorkGiver_DoBill_TryFindBestBillIngredients.curGiver != null)
+            {
+                var comparison = GetBMixComparer(WorkGiver_DoBill_TryFindBestBillIngredients.curGiver, rootCell, bill, out var rnd);
+                if (rnd)
+                {
+                    availableThings.Shuffle();
+                }
+                else
+                {
+                    availableThings.Sort(comparison);
+                }
+            }
+        }
         // Debug
         internal static void BMixDebugList(List<Thing> list, Thing billGiver, IntVec3 rootCell, Bill bill)
         {
@@ -1125,117 +1140,6 @@ namespace BestMix
             }
 
             return Validator;
-        }
-
-        internal static bool TryFindBestMixInSet(List<Thing> availableThings, Bill bill, List<ThingCount> chosen,
-            List<IngredientCount> ingredientsOrdered)
-        {
-            if (bill.recipe.allowMixingIngredients)
-            {
-                return TryFindBestMixInSet_AllowMix(availableThings, bill, chosen);
-            }
-
-            return TryFindBestMixInSet_NoMix(availableThings, bill, chosen, ingredientsOrdered);
-        }
-
-        private static bool TryFindBestMixInSet_NoMix(List<Thing> availableThings, Bill bill, List<ThingCount> chosen,
-            List<IngredientCount> ingredientsOrdered)
-        {
-            var availableCounts = new BMixDefCountList();
-            var recipe = bill.recipe;
-            chosen.Clear();
-            availableCounts.Clear();
-            availableCounts.GenerateFrom(availableThings);
-            for (var i = 0; i < ingredientsOrdered.Count; i++)
-            {
-                var ingredientCount = recipe.ingredients[i];
-                var b = false;
-                for (var j = 0; j < availableCounts.Count; j++)
-                {
-                    float num = ingredientCount.CountRequiredOfFor(availableCounts.GetDef(j), bill.recipe);
-                    if (num > availableCounts.GetCount(j) ||
-                        !ingredientCount.filter.Allows(availableCounts.GetDef(j)) ||
-                        !ingredientCount.IsFixedIngredient && !bill.ingredientFilter.Allows(availableCounts.GetDef(j)))
-                    {
-                        continue;
-                    }
-
-                    foreach (var thing in availableThings)
-                    {
-                        if (thing.def != availableCounts.GetDef(j))
-                        {
-                            continue;
-                        }
-
-                        var num2 = thing.stackCount -
-                                   ThingCountUtility.CountOf(chosen, thing);
-                        if (num2 <= 0)
-                        {
-                            continue;
-                        }
-
-                        var num3 = Mathf.Min(Mathf.FloorToInt(num), num2);
-                        ThingCountUtility.AddToList(chosen, thing, num3);
-                        num -= num3;
-                        if (!(num < 0.001f))
-                        {
-                            continue;
-                        }
-
-                        b = true;
-                        var count = availableCounts.GetCount(j);
-                        count -= ingredientCount.CountRequiredOfFor(availableCounts.GetDef(j), bill.recipe);
-                        availableCounts.SetCount(j, count);
-                        break;
-                    }
-
-                    if (b)
-                    {
-                        break;
-                    }
-                }
-
-                if (!b)
-                {
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
-        private static bool TryFindBestMixInSet_AllowMix(List<Thing> availableThings, Bill bill,
-            List<ThingCount> chosen)
-        {
-            chosen.Clear();
-            foreach (var ingredientCount in bill.recipe.ingredients)
-            {
-                var num = ingredientCount.GetBaseCount();
-                foreach (var thing in availableThings)
-                {
-                    if (!ingredientCount.filter.Allows(thing) ||
-                        !ingredientCount.IsFixedIngredient && !bill.ingredientFilter.Allows(thing))
-                    {
-                        continue;
-                    }
-
-                    var num2 = bill.recipe.IngredientValueGetter.ValuePerUnitOf(thing.def);
-                    var num3 = Mathf.Min(Mathf.CeilToInt(num / num2), thing.stackCount);
-                    ThingCountUtility.AddToList(chosen, thing, num3);
-                    num -= num3 * num2;
-                    if (num <= 0.0001f)
-                    {
-                        break;
-                    }
-                }
-
-                if (num > 0.0001f)
-                {
-                    return false;
-                }
-            }
-
-            return true;
         }
 
         private class BMixDefCountList
