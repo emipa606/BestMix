@@ -1,17 +1,16 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-	<HugsLib.UpdateFeatureDef Abstract="true" Name="UpdateFeatureBase">
-		<modNameReadable>BestMix</modNameReadable>
-		<linkUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2195986094</linkUrl>
-	</HugsLib.UpdateFeatureDef>
-	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
-		<defName>BestMix_1_0_13_0</defName>
-		<assemblyVersion>1.0.13.0</assemblyVersion>
-		<content>The mod should now have restored functionality. 
+  <HugsLib.UpdateFeatureDef Abstract="true" Name="UpdateFeatureBase">
+    <modNameReadable>BestMix</modNameReadable>
+    <linkUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2195986094</linkUrl>
+  </HugsLib.UpdateFeatureDef>
+  <HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
+    <defName>BestMix_1_0_13_0</defName>
+    <assemblyVersion>1.0.13.0</assemblyVersion>
+    <content>The mod should now have restored functionality. 
 The awesome user Kayedon commissioned the equally awesome coder Taranchuk who found a way to fix and simplify the code.
 Hopefully this will make it more maintainable in the future.
 If you enjoy the mod, please consider giving something back to Kayedon as they payed for it to work again.
-Kaydon can be found on my Discord or the main Rimworld discord.</content>
-	</HugsLib.UpdateFeatureDef>
+Kayedon can be found on my Discord or the main Rimworld discord.</content>
+  </HugsLib.UpdateFeatureDef>
 </Defs>
-
