@@ -48,7 +48,6 @@ namespace BestMix.Patches
             {
                 if (i + sortILIndex < (codes.Count - 1) && !found && codes[i + sortILIndex].opcode == OpCodes.Call && codes[i + sortILIndex].operand.ToString().Contains("SortBy"))
                 {
-                    Log.Message(i + " - " + codes[i]);
                     found = true;
                     yield return new CodeInstruction(OpCodes.Ldarg_0);
                     yield return new CodeInstruction(OpCodes.Ldarg_3);
