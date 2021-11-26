@@ -1,25 +1,24 @@
 ﻿using UnityEngine;
 using Verse;
 
-namespace BestMix
+namespace BestMix;
+
+public class Controller : Mod
 {
-    public class Controller : Mod
+    public static Settings Settings;
+
+    public Controller(ModContentPack content) : base(content)
     {
-        public static Settings Settings;
+        Settings = GetSettings<Settings>();
+    }
 
-        public Controller(ModContentPack content) : base(content)
-        {
-            Settings = GetSettings<Settings>();
-        }
+    public override string SettingsCategory()
+    {
+        return "BestMix.Name".Translate();
+    }
 
-        public override string SettingsCategory()
-        {
-            return "BestMix.Name".Translate();
-        }
-
-        public override void DoSettingsWindowContents(Rect canvas)
-        {
-            Settings.DoWindowContents(canvas);
-        }
+    public override void DoSettingsWindowContents(Rect canvas)
+    {
+        Settings.DoWindowContents(canvas);
     }
 }

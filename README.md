@@ -1,6 +1,6 @@
 # BestMix
 
-![Image](https://i.imgur.com/WAEzk68.png)
+![Image](https://i.imgur.com/buuPQel.png)
 
 Update of peladors mod
 https://steamcommunity.com/sharedfiles/filedetails/?id=2002971559
@@ -11,19 +11,12 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=1713295858
 - Added support for Nutrition-stat, High and Low
 - Updated chinese translation, thanks NBurger500
 
-![Image](https://i.imgur.com/7Gzt3Rg.png)
+**As the bill-logic have been changed and my skills in Transpiling-code is not high enough to fix it, the mod is as of now not working.**
 
+![Image](https://i.imgur.com/pufA0kM.png)
 
-[table]
-	[tr]
-		[td]https://invite.gg/Mlie]![Image](https://i.imgur.com/zdzzBrc.png)
-[/td]
-		[td]https://github.com/emipa606/BestMix]![Image](https://i.imgur.com/kTkpTOE.png)
-[/td]
-	[/tr]
-[/table]
 	
-![Image](https://i.imgur.com/NOW7jU1.png)
+![Image](https://i.imgur.com/Z4GOv8H.png)
 
 
 # Overview
@@ -98,7 +91,7 @@ https://steamcommunity.com/id/madeline1324/myworkshopfiles/?appid=294100]Madelin
 
 https://steamcommunity.com/id/littlewhitemouse/myworkshopfiles/?appid=294100]LWM - helping with testing.
 
-KV - &quot;No max bills&quot; allowing more bills for a billgiver. Added functionality (slightly modified).
+KV - "No max bills" allowing more bills for a billgiver. Added functionality (slightly modified).
 
 French translation - Rebecca
 
@@ -111,7 +104,7 @@ Deep Storage (V1.1 when converted) - to further improve the ingredient handling 
 (CC BY-NC-SA 4.0)
 
 
-![Image](https://i.imgur.com/Rs6T6cr.png)
+![Image](https://i.imgur.com/PwoNOj4.png)
 
 
 
@@ -121,7 +114,6 @@ Deep Storage (V1.1 when converted) - to further improve the ingredient handling 
 -  For best support, please use the Discord-channel for error-reporting.
 -  Do not report errors by making a discussion-thread, I get no notification of that.
 -  If you have the solution for a problem, please post it to the GitHub repository.
-
 
 
 
