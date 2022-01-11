@@ -11,7 +11,15 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=1713295858
 - Added support for Nutrition-stat, High and Low
 - Updated chinese translation, thanks NBurger500
 
-**As the bill-logic have been changed and my skills in Transpiling-code is not high enough to fix it, the mod is as of now not working.**
+[strike]**As the bill-logic have been changed and my skills in Transpiling-code is not high enough to fix it, the mod is as of now not working.**[/strike]
+
+Restored functionality thanks to:
+
+
+-  Taranchuk - replacing the old complex code with a more maintainable one
+-  Kayedon - commissioned the work
+
+
 
 ![Image](https://i.imgur.com/pufA0kM.png)
 

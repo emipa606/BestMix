@@ -9,8 +9,14 @@ namespace BestMix;
 
 public class BestMixUtility
 {
-    private const string SoftnessStat = "Textile_Softness";
-    private static readonly string ProtElectricStat = "StuffPower_Armor_Electric";
+    public const string SoftnessStat = "Textile_Softness";
+    public const string ProtElectricStat = "StuffPower_Armor_Electric";
+
+    public static bool IsCEActive;
+    public static bool IsSoftBedsActive;
+
+    public static StatDef softness;
+    public static StatDef protElectric;
 
     public static bool BMixRegionIsInRange(Region r, Thing billGiver, Bill bill)
     {
@@ -161,28 +167,6 @@ public class BestMixUtility
         return Rand.Range(1f, 9999f);
     }
 
-    private static bool IsCEActive()
-    {
-        var modName = "Combat Extended";
-        if (ModLister.HasActiveModWithName(modName))
-        {
-            return true;
-        }
-
-        return false;
-    }
-
-    private static bool IsSoftBedsActive()
-    {
-        var modName = "[JPT] Soft Warm Beds";
-        if (ModLister.HasActiveModWithName(modName))
-        {
-            return true;
-        }
-
-        return false;
-    }
-
     public static List<string> BMixModes()
     {
         var list = new List<string>();
@@ -210,14 +194,14 @@ public class BestMixUtility
         list.AddDistinct("PTB");
         list.AddDistinct("PTS");
         list.AddDistinct("PTH");
-        if (IsCEActive())
+        if (IsCEActive)
         {
             list.AddDistinct("PTE");
         }
 
         list.AddDistinct("INH");
         list.AddDistinct("INC");
-        if (IsSoftBedsActive())
+        if (IsSoftBedsActive)
         {
             list.AddDistinct("SOF");
         }
@@ -680,7 +664,6 @@ public class BestMixUtility
                 {
                     var num = 0f;
                     var value = 0f;
-                    var protElectric = DefDatabase<StatDef>.GetNamed(ProtElectricStat, false);
                     if (protElectric == null)
                     {
                         return num.CompareTo(value);
@@ -713,7 +696,6 @@ public class BestMixUtility
                 {
                     var num = 0f;
                     var value = 0f;
-                    var softness = DefDatabase<StatDef>.GetNamed(SoftnessStat, false);
                     if (softness == null)
                     {
                         return num.CompareTo(value);
@@ -1060,7 +1042,6 @@ public class BestMixUtility
                 stat = thing.GetStatValue(StatDefOf.StuffPower_Armor_Heat);
                 break;
             case "PTE":
-                var protElectric = DefDatabase<StatDef>.GetNamed(ProtElectricStat, false);
                 if (protElectric != null)
                 {
                     stat = thing.GetStatValue(protElectric);
@@ -1074,7 +1055,6 @@ public class BestMixUtility
                 stat = thing.GetStatValue(StatDefOf.StuffPower_Insulation_Cold);
                 break;
             case "SOF":
-                var softness = DefDatabase<StatDef>.GetNamed(SoftnessStat, false);
                 if (softness != null)
                 {
                     stat = thing.GetStatValue(softness);

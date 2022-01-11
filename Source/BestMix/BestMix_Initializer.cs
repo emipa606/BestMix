@@ -10,6 +10,11 @@ internal static class BestMix_Initializer
     static BestMix_Initializer()
     {
         LongEventHandler.QueueLongEvent(Setup, "LibraryStartup", false, null);
+
+        BestMixUtility.IsCEActive = ModLister.GetActiveModWithIdentifier("CETeam.CombatExtended") != null;
+        BestMixUtility.IsSoftBedsActive = ModLister.GetActiveModWithIdentifier("JPT.SoftWarmBeds") != null;
+        BestMixUtility.softness = DefDatabase<StatDef>.GetNamed(BestMixUtility.SoftnessStat, false);
+        BestMixUtility.protElectric = DefDatabase<StatDef>.GetNamed(BestMixUtility.ProtElectricStat, false);
     }
 
     private static void Setup()
