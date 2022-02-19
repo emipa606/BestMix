@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-  <HugsLib.UpdateFeatureDef Abstract="true" Name="UpdateFeatureBase">
+  <HugsLib.UpdateFeatureDef Abstract="true" Name="Mlie_UpdateFeatureBase">
     <modNameReadable>BestMix</modNameReadable>
     <linkUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2195986094</linkUrl>
   </HugsLib.UpdateFeatureDef>
-  <HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
+  <HugsLib.UpdateFeatureDef ParentName="Mlie_UpdateFeatureBase">
     <defName>BestMix_1_0_13_0</defName>
     <assemblyVersion>1.0.13.0</assemblyVersion>
     <content>The mod should now have restored functionality. 
