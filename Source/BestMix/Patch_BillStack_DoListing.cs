@@ -41,12 +41,12 @@ public static class Patch_BillStack_DoListing
             Log.Error("BestMix.MaxBillFail"
                 .Translate()); // BestMix could not change the number of max bills for benches, this will be due to a mod conflict.
         }
-        else
-        {
-            Log.Message(
-                "BestMix.MaxBillDone"
-                    .Translate(newMax
-                        .ToString())); // BestMix changed the maximum number of bills for billgivers to {newMax}.
-        }
+        //else
+        //{
+        //    Log.Message(
+        //        "BestMix.MaxBillDone"
+        //            .Translate(newMax
+        //                .ToString())); // BestMix changed the maximum number of bills for billgivers to {newMax}.
+        //}
     }
 }

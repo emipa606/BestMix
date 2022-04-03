@@ -1,5 +1,8 @@
 # Changelog for BestMix
 
+1.3.4 - Removed exessive logging during crafting
+
+
 1.3.3 - More unique defname for the HugLib-news base-definition, to avoid conflicts with other mods
 
 
