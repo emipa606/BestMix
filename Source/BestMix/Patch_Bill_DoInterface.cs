@@ -15,7 +15,7 @@ public static class Patch_Bill_DoInterface
     public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
     {
         var billStack_FieldInfo = AccessTools.Field(typeof(Bill), "billStack");
-        var EndGroupGUI = AccessTools.Method(typeof(GUI), "EndGroup");
+        var EndGroupGUI = AccessTools.Method(typeof(Widgets), "EndGroup");
         var AddBMGUIPart = AccessTools.Method(typeof(Patch_Bill_DoInterface), "AddBMGUI",
             new[] { typeof(float), typeof(BillStack), typeof(Bill) });
 
