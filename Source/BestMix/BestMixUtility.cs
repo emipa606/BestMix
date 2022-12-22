@@ -785,7 +785,7 @@ public class BestMixUtility
 
     public static void Sort(List<Thing> availableThings, IntVec3 rootCell, Bill bill = null)
     {
-        if (WorkGiver_DoBill_TryFindBestBillIngredients.curGiver == null)
+        if (WorkGiver_DoBill_TryFindBestBillIngredients.curGiver == null || bill is Bill_Medical)
         {
             return;
         }

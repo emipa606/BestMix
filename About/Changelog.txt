@@ -1,5 +1,8 @@
 # Changelog for BestMix
 
+1.4.2 - Fix for the medicine-issue, thanks again Kopp!
+
+
 1.4.1 - Finally fixed for 1.4, thanks Kopp for the fix!.
 Used DeepL to update translations for ChineseSimplified, French, German, Russian
 
