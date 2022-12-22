@@ -137,12 +137,7 @@ public class BestMixUtility
             return false;
         }
 
-        if (BMBillUtility.UseBMixMode(CBM, billGiver, bill) == "DIS")
-        {
-            return true;
-        }
-
-        return false;
+        return BMBillUtility.UseBMixMode(CBM, billGiver, bill) == "DIS";
     }
 
     public static bool IsValidForComp(Thing thing)
@@ -153,13 +148,8 @@ public class BestMixUtility
             return false;
         }
 
-        if (!Controller.Settings.AllowMealMakersOnly || Controller.Settings.AllowMealMakersOnly &&
-            building.def.building.isMealSource)
-        {
-            return true;
-        }
-
-        return false;
+        return !Controller.Settings.AllowMealMakersOnly || Controller.Settings.AllowMealMakersOnly &&
+            building.def.building.isMealSource;
     }
 
     public static float RNDFloat()
@@ -874,22 +864,22 @@ public class BestMixUtility
         {
             if (p_chosen.Count > 0)
             {
-                Log.Message(billGiver.Label + ", " + "BestMix.Chosen".Translate() + ":");
+                Log.Message($"{billGiver.Label}, " + "BestMix.Chosen".Translate() + ":");
                 foreach (var TC in p_chosen)
                 {
                     var thing = TC.Thing;
                     var count = TC.Count;
-                    Log.Message(thing.Label + " , " + count);
+                    Log.Message($"{thing.Label} , {count}");
                 }
             }
             else
             {
-                Log.Message(billGiver.Label + ", " + "BestMix.NoChosen".Translate() + ":");
+                Log.Message($"{billGiver.Label}, " + "BestMix.NoChosen".Translate() + ":");
             }
         }
         else
         {
-            Log.Message(billGiver.Label + ", " + "BestMix.NullChosen".Translate() + ":");
+            Log.Message($"{billGiver.Label}, " + "BestMix.NullChosen".Translate() + ":");
         }
     }
 
@@ -1078,25 +1068,14 @@ public class BestMixUtility
                 break;
         }
 
-        var debugPos = "(" + thing.Position.x + ", " + thing.Position.z + ")";
-        var debugMsg = "Debug " + BMixMode + " " + indx + " " + billGiver.ThingID + " " + thing.LabelShort + " " +
-                       debugPos + " " + stat.ToString("F2");
+        var debugPos = $"({thing.Position.x}, {thing.Position.z})";
+        var debugMsg = $"Debug {BMixMode} {indx} {billGiver.ThingID} {thing.LabelShort} {debugPos} {stat:F2}";
         return debugMsg;
     }
 
     public static bool BMIsForbidden(Thing thing)
     {
-        if (thing?.TryGetComp<CompForbiddable>() == null)
-        {
-            return false;
-        }
-
-        if (thing.TryGetComp<CompForbiddable>().Forbidden)
-        {
-            return true;
-        }
-
-        return false;
+        return thing?.TryGetComp<CompForbiddable>() != null && thing.TryGetComp<CompForbiddable>().Forbidden;
     }
 
     private static bool BMStockInRadius(Thing t, Thing billGiver, Bill bill)
@@ -1137,12 +1116,7 @@ public class BestMixUtility
             get
             {
                 var num = defs.IndexOf(def);
-                if (num < 0)
-                {
-                    return 0f;
-                }
-
-                return counts[num];
+                return num < 0 ? 0f : counts[num];
             }
             set
             {

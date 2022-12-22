@@ -3,42 +3,13 @@ using System.Linq;
 using System.Reflection.Emit;
 using HarmonyLib;
 using RimWorld;
-using Verse;
 
 namespace BestMix.Patches;
-
-[HarmonyPatch(typeof(WorkGiver_DoBill), "TryFindBestBillIngredients")]
-public static class WorkGiver_DoBill_TryFindBestBillIngredients
-{
-    public static Thing curGiver;
-
-    public static void Prefix(Bill bill, Pawn pawn, Thing billGiver, List<ThingCount> chosen)
-    {
-        curGiver = billGiver;
-    }
-
-    public static void Postfix()
-    {
-        curGiver = null;
-    }
-}
-
-[HarmonyPatch(typeof(WorkGiver_DoBill), "TryFindBestIngredientsInSet_NoMixHelper")]
-public static class WorkGiver_DoBill_TryFindBestIngredientsInSet_NoMixHelper
-{
-    [HarmonyPriority(Priority.First)]
-    public static void Prefix(List<Thing> availableThings, List<IngredientCount> ingredients, List<ThingCount> chosen,
-        IntVec3 rootCell, ref bool alreadySorted, Bill bill = null)
-    {
-        BestMixUtility.Sort(availableThings, rootCell, bill);
-        alreadySorted = true;
-    }
-}
 
 [HarmonyPatch(typeof(WorkGiver_DoBill), "TryFindBestBillIngredientsInSet_AllowMix")]
 public static class WorkGiver_DoBill_TryFindBestBillIngredientsInSet_AllowMix
 {
-    public const int sortILIndex = 7;
+    public const int sortILIndex = 6;
 
     private static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
     {
@@ -50,7 +21,7 @@ public static class WorkGiver_DoBill_TryFindBestBillIngredientsInSet_AllowMix
                 codes[i + sortILIndex].operand.ToString().Contains("SortBy"))
             {
                 found = true;
-                yield return new CodeInstruction(OpCodes.Ldarg_0);
+                //yield return new CodeInstruction(OpCodes.Ldarg_0);
                 yield return new CodeInstruction(OpCodes.Ldarg_3);
                 yield return new CodeInstruction(OpCodes.Ldarg_1);
                 yield return new CodeInstruction(OpCodes.Call,

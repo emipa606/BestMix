@@ -43,17 +43,6 @@ public class Settings : ModSettings
             listing_Standard.CheckboxLabeled("BestMix.AllowMealMakersOnly".Translate(), ref AllowMealMakersOnly);
             listing_Standard.Gap(gap * 2f);
 
-            // Max Bills
-            /*
-            if ((Prefs.DevMode) && (DebugMaster))
-            {
-                listing_Standard.CheckboxLabeled("BestMix.AllowBMBillMaxSet".Translate(), ref AllowBMBillMaxSet, null);
-                listing_Standard.Gap(gap);
-            }
-            */
-
-            // Stock comparison (performance considerations)
-
             if (useStock)
             {
                 listing_Standard.CheckboxLabeled("BestMix.MapStock".Translate(), ref mapStock);
@@ -97,6 +86,14 @@ public class Settings : ModSettings
                 listing_Standard.Gap(gap * 2);
                 listing_Standard.CheckboxLabeled("BestMix.DebugIgnore".Translate(), ref DebugIgnore);
                 listing_Standard.Gap(gap);
+            }
+
+            if (Controller.currentVersion != null)
+            {
+                listing_Standard.Gap();
+                GUI.contentColor = Color.gray;
+                listing_Standard.Label("BestMix.VersionInfo".Translate(Controller.currentVersion));
+                GUI.contentColor = Color.white;
             }
 
             listing_Standard.End();

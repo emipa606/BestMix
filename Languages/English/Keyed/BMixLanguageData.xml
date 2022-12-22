@@ -59,5 +59,6 @@
   <BestMix.SelectModeDesc>Used to select the Best Mix mode</BestMix.SelectModeDesc>
   <BestMix.DoNothing>(No Change)</BestMix.DoNothing>
   <BestMix.DebugLabel>Debug</BestMix.DebugLabel>
+  <BestMix.VersionInfo>Installed mod-version: {0}</BestMix.VersionInfo>
   <BestMix.DebugDesc>Toggle logging potential ingredients listing</BestMix.DebugDesc>
 </LanguageData>

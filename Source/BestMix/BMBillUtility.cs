@@ -218,7 +218,7 @@ public class BMBillUtility
 
     private static string NewBillBMMode(string id, string mode)
     {
-        return id + ";" + mode;
+        return $"{id};{mode}";
     }
 
     private static string BillValuePart(string value)
