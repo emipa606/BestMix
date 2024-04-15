@@ -212,7 +212,7 @@ public class BMBillUtility
         }
         else
         {
-            CBM.BillBMModes = new List<string>();
+            CBM.BillBMModes = [];
         }
     }
 
@@ -223,14 +223,14 @@ public class BMBillUtility
 
     private static string BillValuePart(string value)
     {
-        char[] divider = { ';' };
+        char[] divider = [';'];
         var segments = value.Split(divider);
         return segments[0];
     }
 
     private static string ModeValuePart(string value)
     {
-        char[] divider = { ';' };
+        char[] divider = [';'];
         var segments = value.Split(divider);
         return segments[1];
     }

@@ -9,7 +9,7 @@ namespace BestMix;
 
 public class CompBestMix : ThingComp
 {
-    public List<string> BillBMModes = new List<string>();
+    public List<string> BillBMModes = [];
     public bool BMixDebug;
     public string CurMode;
 

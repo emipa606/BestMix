@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using HarmonyLib;
+﻿using HarmonyLib;
 using RimWorld;
 using Verse;
 
@@ -10,7 +9,7 @@ public static class WorkGiver_DoBill_TryFindBestBillIngredients
 {
     public static Thing curGiver;
 
-    public static void Prefix(Bill bill, Pawn pawn, Thing billGiver, List<ThingCount> chosen)
+    public static void Prefix(Thing billGiver)
     {
         curGiver = billGiver;
     }

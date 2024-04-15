@@ -17,7 +17,7 @@ public static class Patch_Bill_DoInterface
         var billStack_FieldInfo = AccessTools.Field(typeof(Bill), "billStack");
         var EndGroupGUI = AccessTools.Method(typeof(Widgets), "EndGroup");
         var AddBMGUIPart = AccessTools.Method(typeof(Patch_Bill_DoInterface), "AddBMGUI",
-            new[] { typeof(float), typeof(BillStack), typeof(Bill) });
+            [typeof(float), typeof(BillStack), typeof(Bill)]);
 
         var instructionList = instructions.ToList();
         var length = instructionList.Count;
@@ -29,7 +29,7 @@ public static class Patch_Bill_DoInterface
                 //Log.Message($"Opcode : {codeInstruction.opcode} | Operand : {codeInstruction.operand ?? "null"}"); // Debug
                 //Log.Message($"Opcode : {instructionList[i - 1].opcode} | Operand : {instructionList[i - 1].operand ?? "null"}"); // Debug
 
-                // Insert pseudo code here
+                // Insert pseudocode here
                 // static method doesn't need any reference to instance to call method.
                 // yield return new CodeInstruction(OpCodes.Ldarg_0);
 

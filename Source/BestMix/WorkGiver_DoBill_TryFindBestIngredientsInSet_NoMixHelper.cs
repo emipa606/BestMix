@@ -9,8 +9,7 @@ namespace BestMix.Patches;
 public static class WorkGiver_DoBill_TryFindBestIngredientsInSet_NoMixHelper
 {
     [HarmonyPriority(Priority.First)]
-    public static void Prefix(List<Thing> availableThings, List<IngredientCount> ingredients, List<ThingCount> chosen,
-        IntVec3 rootCell, ref bool alreadySorted, Bill bill = null)
+    public static void Prefix(List<Thing> availableThings, IntVec3 rootCell, ref bool alreadySorted, Bill bill = null)
     {
         BestMixUtility.Sort(availableThings, rootCell, bill);
         alreadySorted = true;

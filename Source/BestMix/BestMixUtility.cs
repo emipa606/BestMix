@@ -855,7 +855,7 @@ public class BestMixUtility
         }
 
         var compBestMix = billGiver.TryGetComp<CompBestMix>();
-        if (compBestMix == null || !compBestMix.BMixDebug)
+        if (compBestMix is not { BMixDebug: true })
         {
             return;
         }
@@ -1091,6 +1091,8 @@ public class BestMixUtility
 
     public static Predicate<Thing> BestMixValidator(Pawn pawn, Thing billGiver, Bill bill)
     {
+        return Validator;
+
         bool Validator(Thing t)
         {
             return t.Spawned && !t.IsForbidden(pawn)
@@ -1099,83 +1101,6 @@ public class BestMixUtility
                              && bill.IsFixedOrAllowedIngredient(t) &&
                              bill.recipe.ingredients.Any(ingNeed => ingNeed.filter.Allows(t))
                              && pawn.CanReserve(t);
-        }
-
-        return Validator;
-    }
-
-    private class BMixDefCountList
-    {
-        private readonly List<float> counts = new List<float>();
-        private readonly List<ThingDef> defs = new List<ThingDef>();
-
-        public int Count => defs.Count;
-
-        private float this[ThingDef def]
-        {
-            get
-            {
-                var num = defs.IndexOf(def);
-                return num < 0 ? 0f : counts[num];
-            }
-            set
-            {
-                var num = defs.IndexOf(def);
-                if (num < 0)
-                {
-                    defs.Add(def);
-                    counts.Add(value);
-                    num = defs.Count - 1;
-                }
-                else
-                {
-                    counts[num] = value;
-                }
-
-                CheckRemove(num);
-            }
-        }
-
-        public float GetCount(int index)
-        {
-            return counts[index];
-        }
-
-        public void SetCount(int index, float val)
-        {
-            counts[index] = val;
-            CheckRemove(index);
-        }
-
-        public ThingDef GetDef(int index)
-        {
-            return defs[index];
-        }
-
-        private void CheckRemove(int index)
-        {
-            if (counts[index] != 0f)
-            {
-                return;
-            }
-
-            counts.RemoveAt(index);
-            defs.RemoveAt(index);
-        }
-
-        public void Clear()
-        {
-            defs.Clear();
-            counts.Clear();
-        }
-
-        public void GenerateFrom(List<Thing> things)
-        {
-            Clear();
-            foreach (var thing in things)
-            {
-                this[thing.def] += thing.stackCount;
-            }
         }
     }
 }

@@ -1,5 +1,8 @@
 # Changelog for BestMix
 
+1.5.0 - Updated for 1.5, at least its not working worse than before
+
+
 1.4.2 - Fix for the medicine-issue, thanks again Kopp!
 
 
