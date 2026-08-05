@@ -213,6 +213,11 @@ public class BMBillUtility
 
     private static string billValuePart(string value)
     {
+        if (string.IsNullOrEmpty(value))
+        {
+            return string.Empty;
+        }
+
         char[] divider = [';'];
         var segments = value.Split(divider);
         return segments[0];
@@ -220,8 +225,13 @@ public class BMBillUtility
 
     private static string modeValuePart(string value)
     {
+        if (string.IsNullOrEmpty(value))
+        {
+            return "NON";
+        }
+
         char[] divider = [';'];
         var segments = value.Split(divider);
-        return segments[1];
+        return segments.Length > 1 ? segments[1] : "NON";
     }
 }

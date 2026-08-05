@@ -15,6 +15,11 @@ public static class BillStack_DoListing
     {
         if (!Controller.Settings.AllowBMBillMaxSet)
         {
+            foreach (var instruction in instructions)
+            {
+                yield return instruction;
+            }
+
             yield break;
         }
 
