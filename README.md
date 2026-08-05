@@ -124,4 +124,4 @@ Deep Storage (V1.1 when converted) - to further improve the ingredient handling 
 
  
 
-[![Image](https://img.shields.io/github/v/release/emipa606/BestMix?label=latest%20version&style=plastic&color=9f1111&labelColor=black)](https://steamcommunity.com/sharedfiles/filedetails/changelog/2195986094) | tags: ingredient selection
+[![Image](https://img.shields.io/github/v/release/emipa606/BestMix?label=latest%20version&style=plastic&color=9f1111&labelColor=black)](https://steamcommunity.com/sharedfiles/filedetails/changelog/2195986094) | ingredient selection

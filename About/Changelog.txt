@@ -1,5 +1,8 @@
 # Changelog for BestMix
 
+1.6.2 - Bug-fix for bill-handling, thanks Spangles
+
+
 1.6.1 - Fixed JPTSoftWarmBeds compatibility check
 
 
