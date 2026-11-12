@@ -7,7 +7,7 @@ using Verse.AI;
 
 namespace BestMix;
 
-public class BestMixUtility
+public static class BestMixUtility
 {
     public const string SoftnessStat = "Textile_Softness";
     public const string ProtElectricStat = "StuffPower_Armor_Electric";
@@ -33,7 +33,6 @@ public class BestMixUtility
         var compBMix = billGiver.TryGetComp<CompBestMix>();
         if (compBMix != null)
         {
-            //if (compBMix.CurMode == "DIS")
             if (BMBillUtility.UseBMixMode(compBMix, billGiver, bill) == "DIS")
             {
                 return true;
@@ -72,8 +71,12 @@ public class BestMixUtility
                     break;
             }
 
-            //if (chkcell.GetRegion(map) == r)
             if (!Equals(regions.GetRegionAt_NoRebuild_InvalidAllowed(chkcell), r))
+            {
+                continue;
+            }
+
+            if (billGiver == null)
             {
                 continue;
             }
@@ -116,7 +119,6 @@ public class BestMixUtility
             return true;
         }
 
-        //if (billGiver.TryGetComp<CompBestMix>().CurMode == "DIS")
         var cbm = billGiver.TryGetComp<CompBestMix>();
         if (cbm == null)
         {
@@ -394,7 +396,6 @@ public class BestMixUtility
             var compBM = billGiver.TryGetComp<CompBestMix>();
             if (compBM != null)
             {
-                //BMixMode = compBM.CurMode;
                 bMixMode = BMBillUtility.UseBMixMode(compBM, billGiver, bill);
             }
         }
@@ -540,12 +541,10 @@ public class BestMixUtility
                     var thing1Beauty = t1.GetStatValue(StatDefOf.Beauty);
                     var thing2Beauty = t2.GetStatValue(StatDefOf.Beauty);
 
-                    if (t1.def?.stuffProps?.statFactors != null)
+                    if (t1.def?.stuffProps?.statFactors != null &&
+                        t1.def.stuffProps.statFactors.StatListContains(StatDefOf.Beauty))
                     {
-                        if (t1.def.stuffProps.statFactors.StatListContains(StatDefOf.Beauty))
-                        {
-                            thing1Beauty += t1.def.stuffProps.statFactors.GetStatOffsetFromList(StatDefOf.Beauty);
-                        }
+                        thing1Beauty += t1.def.stuffProps.statFactors.GetStatOffsetFromList(StatDefOf.Beauty);
                     }
 
                     if (t2.def?.stuffProps?.statFactors == null)
@@ -565,12 +564,10 @@ public class BestMixUtility
                 comparison = delegate(Thing t1, Thing t2)
                 {
                     var thing2Beauty = t2.GetStatValue(StatDefOf.Beauty);
-                    if (t2.def?.stuffProps?.statFactors != null)
+                    if (t2.def?.stuffProps?.statFactors != null &&
+                        t2.def.stuffProps.statFactors.StatListContains(StatDefOf.Beauty))
                     {
-                        if (t2.def.stuffProps.statFactors.StatListContains(StatDefOf.Beauty))
-                        {
-                            thing2Beauty += t2.def.stuffProps.statFactors.GetStatOffsetFromList(StatDefOf.Beauty);
-                        }
+                        thing2Beauty += t2.def.stuffProps.statFactors.GetStatOffsetFromList(StatDefOf.Beauty);
                     }
 
                     var thing1Beauty = t1.GetStatValue(StatDefOf.Beauty);
@@ -745,12 +742,9 @@ public class BestMixUtility
                 continue;
             }
 
-            if (Controller.Settings.inStorage)
+            if (Controller.Settings.inStorage && !thing.IsInValidStorage())
             {
-                if (!thing.IsInValidStorage())
-                {
-                    continue;
-                }
+                continue;
             }
 
             if (bmIsForbidden(thing))
@@ -966,23 +960,19 @@ public class BestMixUtility
                 break;
             case "BTY":
                 stat = thing.GetStatValue(StatDefOf.Beauty);
-                if (thing.def?.stuffProps?.statOffsets != null)
+                if (thing.def?.stuffProps?.statOffsets != null &&
+                    thing.def.stuffProps.statOffsets.StatListContains(StatDefOf.Beauty))
                 {
-                    if (thing.def.stuffProps.statOffsets.StatListContains(StatDefOf.Beauty))
-                    {
-                        stat += thing.def.stuffProps.statOffsets.GetStatOffsetFromList(StatDefOf.Beauty);
-                    }
+                    stat += thing.def.stuffProps.statOffsets.GetStatOffsetFromList(StatDefOf.Beauty);
                 }
 
                 break;
             case "UGY":
                 stat = 0f - thing.GetStatValue(StatDefOf.Beauty);
-                if (thing.def?.stuffProps?.statOffsets != null)
+                if (thing.def?.stuffProps?.statOffsets != null &&
+                    thing.def.stuffProps.statOffsets.StatListContains(StatDefOf.Beauty))
                 {
-                    if (thing.def.stuffProps.statOffsets.StatListContains(StatDefOf.Beauty))
-                    {
-                        stat -= thing.def.stuffProps.statOffsets.GetStatOffsetFromList(StatDefOf.Beauty);
-                    }
+                    stat -= thing.def.stuffProps.statOffsets.GetStatOffsetFromList(StatDefOf.Beauty);
                 }
 
                 break;

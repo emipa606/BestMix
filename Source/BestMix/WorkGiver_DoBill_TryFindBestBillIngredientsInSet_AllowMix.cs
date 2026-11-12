@@ -11,14 +11,14 @@ public static class WorkGiver_DoBill_TryFindBestBillIngredientsInSet_AllowMix
 {
     private const int sortILIndex = 6;
 
-    private static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+    public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
     {
         var codes = instructions.ToList();
         var found = false;
         for (var i = 0; i < codes.Count; i++)
         {
             if (i + sortILIndex < codes.Count - 1 && !found && codes[i + sortILIndex].opcode == OpCodes.Call &&
-                codes[i + sortILIndex].operand.ToString().Contains("SortBy"))
+                codes[i + sortILIndex].operand.ToString()!.Contains("SortBy"))
             {
                 found = true;
                 yield return new CodeInstruction(OpCodes.Ldarg_3);

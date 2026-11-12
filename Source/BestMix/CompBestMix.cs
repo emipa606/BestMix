@@ -9,8 +9,8 @@ namespace BestMix;
 
 public class CompBestMix : ThingComp
 {
-    public List<string> BillBMModes = [];
     public bool BMixDebug;
+    public List<string> BillBMModes = [];
     public string CurMode;
 
     private CompProperties_BestMix BmProps => (CompProperties_BestMix)props;

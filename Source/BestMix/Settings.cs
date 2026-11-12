@@ -5,15 +5,14 @@ namespace BestMix;
 
 public class Settings : ModSettings
 {
-    private readonly bool adjBillBMPos = false; // not saved
-
     public readonly bool DebugMaster = false; // not saved
     private readonly bool RadiusRestrict = false; // not saved
+    private readonly bool adjBillBMPos = false; // not saved
 
     public readonly bool useStock = true; // not saved
+    public bool AllowBMBillMaxSet = true;
 
     public bool AllowBestMix = true;
-    public bool AllowBMBillMaxSet = true;
     public bool AllowMealMakersOnly;
     private float BillBMPos = 150f; // not saved
     public bool DebugChosen;
@@ -22,10 +21,10 @@ public class Settings : ModSettings
     public bool DebugSort;
 
     public bool IncludeRegionLimiter = true;
-    public bool inStorage = true;
-    public bool mapStock;
     public int RadiusLimit = 100;
     public bool UseRadiusLimit;
+    public bool inStorage = true;
+    public bool mapStock;
 
     public void DoWindowContents(Rect canvas)
     {

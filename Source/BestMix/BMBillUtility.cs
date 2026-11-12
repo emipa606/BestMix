@@ -6,7 +6,7 @@ using Verse;
 
 namespace BestMix;
 
-public class BMBillUtility
+public static class BMBillUtility
 {
     public static string UseBMixMode(CompBestMix compBM, Thing billGiver, Bill bill)
     {
@@ -145,12 +145,9 @@ public class BMBillUtility
             var current = cbm.BillBMModes;
             if (current.Count > 0)
             {
-                foreach (var BillBMMode in current)
+                foreach (var BillBMMode in current.Where(bm => billValuePart(bm) != billID))
                 {
-                    if (billValuePart(BillBMMode) != billID)
-                    {
-                        newList.AddDistinct(BillBMMode);
-                    }
+                    newList.AddDistinct(BillBMMode);
                 }
             }
 
@@ -190,12 +187,9 @@ public class BMBillUtility
                 }
             }
 
-            foreach (var billMode in billModes)
+            foreach (var billMode in billModes.Where(bm => billIDs.Contains(billValuePart(bm))))
             {
-                if (billIDs.Contains(billValuePart(billMode)))
-                {
-                    newBillModes.AddDistinct(billMode);
-                }
+                newBillModes.AddDistinct(billMode);
             }
 
             cbm.BillBMModes = newBillModes;

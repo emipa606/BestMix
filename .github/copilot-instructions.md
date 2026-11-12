@@ -1,60 +1,71 @@
-# Copilot Instructions for Best Mix (Continued)
+# GitHub Copilot Instructions for Best Mix (Continued) Mod
 
 ## Mod Overview and Purpose
 
-**Mod Name:** Best Mix (Continued)  
-**Author:** pelador  
-**PackageId:** Mlie.BestMix  
-
-The Best Mix mod is a Quality of Life enhancement for RimWorld that allows variances in how crafting workbenches select their ingredients. By providing users with a gizmo interface on workbenches, it offers alternative criteria for ingredient selection beyond the default distance-based search used by the Vanilla game. This mod is particularly beneficial for players who wish to utilize specific properties of materials for different production purposes.
+Best Mix (Continued) is an updated version of pelador's mod, enhancing the quality of life (QoL) in RimWorld by introducing variance in how benches select their ingredients. This mod allows players to customize the selection criteria for ingredients, providing a wide range of options to optimize their game experience.
 
 ## Key Features and Systems
 
-- **Ingredient Selection Criteria:** The mod introduces multiple criteria for ingredient selection at workbenches, such as Beauty (Prettiest/Ugliest), Insulation (Cold/Heat), Flammability, Durability, and more.
-- **Individual Best Mix Settings:** Customize settings for each bill, defaulting to the gizmo value if none are set.
-- **Compatibility with Other Mods:** Features compatibility with mods like Combat Extended and provides native multiplayer support.
-- **Mod Options:** Global settings to control the functionality across the game, including toggling the mod on/off and limiting functionality to specific benches like stoves or campfires.
+### Ingredient Selection
+The mod introduces a variety of criteria for selecting ingredients, including:
+
+- **Beauty**: Select ingredients with the highest or lowest beauty.
+- **Insulation**: Select ingredients with the best insulation properties for heat or cold.
+- **Ignition**: Select the most flammable ingredients.
+- **Condition**: Select ingredients with the highest or lowest hit points.
+- **Expiry**: Select the most perishable items.
+- **Robustness**: Select ingredients with the most hit points.
+- **Mass**: Select ingredients with the heaviest or lightest mass.
+- **Protection**: Select ingredients with the best protection against blunt or sharp damage.
+- **Temperature**: Select ingredients with the coldest or warmest ambient temperature.
+- **Value**: Select ingredients with the cheapest or most expensive value.
+- **Weapon Damage**: Select ingredients with the bluntest or sharpest weapon damage.
+
+### Customizable Settings
+Players can set global settings for ingredient selection or individual settings for specific bills. The mod also includes options to:
+
+- Limit functionality to meal source benches.
+- Adjust stock selection criteria, such as evaluating the whole map or considering valid storage locations.
+
+### Maximum Bills
+The mod sets the maximum number of bills for a billgiver to 125, ensuring better management of workbenches.
 
 ## Coding Patterns and Conventions
 
-- **Well-Structured C# Code:** The mod is organized into multiple C# files, focusing on different components like the main controller (`Controller.cs`), component properties (`CompProperties_BestMix.cs`), and Harmony patches.
-- **Modular Architecture:** Use of components and properties pattern (`CompBestMix`, `CompProperties_BestMix`) to enable flexibility and reusability.
-- **Consistency:** Follows standard C# naming conventions and RimWorld's mod development guidelines for readability and maintenance.
+### C# Files
+The mod is primarily written in C# and follows common coding conventions, including:
 
-## XML Integration
+- **Namespaces**: Use `BestMix` as the primary namespace.
+- **Classes and Methods**: Classes and methods are named descriptively to convey their purpose.
+- **Mod Initialization**: The `BestMix_Initializer` class handles the initialization of the mod.
+- **Settings**: The `Controller` class manages mod settings through the settings window.
 
-- Although there are currently no XML definition files, the mod's architecture allows easy integration of XML for future features or translations.
-- XML can be used in the future for defining new item types, language translations, or mod settings.
+### XML Integration
+XML files are used to define mod-specific data and integrate with RimWorld's data system. Key files include:
+
+- **Defs**: Define new or modified game elements.
+- **Settings**: Store mod-specific settings.
 
 ## Harmony Patching
 
-- **Harmony Library:** The mod uses Harmony for core functionality, allowing modifications to RimWorld's original methods without altering the source code.
-- **Transpiler Usage:** Features Harmony's Transpiler method for intricate patches, particularly in files like `BillStack_DoListing.cs` and `Bill_DoInterface.cs`.
-- **Collaborative Development:** Contributions from developers like Taranchuk for code maintainability and Madeline for developing harmony transpiler work.
+Harmony patching is used extensively in the mod to modify existing game behavior without altering the original source code. Key Harmony patches include:
+
+- **Bill_DoInterface**: Patches the `DoInterface` method to add custom GUI elements for ingredient selection.
+- **BillStack_DoListing**: Patches the `DoListing` method to modify the behavior of ingredient listing.
 
 ## Suggestions for Copilot
 
-1. **Transpiler Enhancements:** Improve or assist with complex transpiler methods to provide efficient and error-free functionality.
-2. **XML File Generation:** Suggest XML snippets for future translation files or configurable settings.
-3. **Refactoring Suggestions:** Propose code refactoring for better performance and readability.
-4. **Debugging Assistance:** Offer solutions for potential runtime errors and assist in debugging harmony patches.
-5. **Documentation and Comments:** Automatically generate detailed comments and documentation for each method and class, maintaining consistency and clarity.
+### General Recommendations
+- **Code Quality**: Ensure that generated code adheres to the existing coding patterns and conventions.
+- **Documentation**: Include comments and documentation to explain the purpose and functionality of new code.
+- **Testing**: Test new features thoroughly to ensure compatibility and functionality within the mod.
 
-## Compatibility and Known Issues
+### Specific Requests
+- **Harmony Patches**: Generate Harmony patches for new features, ensuring they integrate seamlessly with existing code.
+- **XML Integration**: Provide examples of XML files for defining new elements and integrating with RimWorld's data system.
+- **Mod Settings**: Generate code for new mod settings, including GUI elements for user interaction.
 
-- The mod is mostly compatible with other mods, though subject to issues if the mod order is incorrect.
-- To diagnose mod conflicts, enable only this mod and its dependencies first, then gradually add others.
-- If errors occur, use the RimWorld Log Uploader and report issues via the Discord channel, rather than starting new discussion threads.
-
-## Credits and Acknowledgments
-
-- **Madeline:** For her key role in developing harmony transpiler work.
-- **Taranchuk and Kayedon:** For contributions to code maintainability and commissioning of work.
-- **LWM and KV:** For assistance in testing and augmenting functionality.
-- **Translators:** NB and NBurger500 for Chinese translation contributions.
-- **Rebecca:** For French translation.
-
-Maintained under CC BY-NC-SA 4.0 license. For best support, utilize the provided community resources like Discord and RimSort for mod sorting.
+By following these guidelines, you can ensure that contributions made using GitHub Copilot are consistent with the Best Mix (Continued) mod's standards and enhance its functionality effectively.
 
 ## Project Solution Guidelines
 - Relevant mod XML files are included as Solution Items under the solution folder named XML, these can be read and modified from within the solution.
@@ -68,4 +79,6 @@ Maintained under CC BY-NC-SA 4.0 license. For best support, utilize the provided
 ## Hard rules (must follow)
 - Do NOT run commands that modify the repo (no git commit, git apply, dotnet format) unless explicitly asked.
 - Prefer minimal reads: read only the smallest code region needed (around the suspicious lines).
+- When mentioning SonarQube issues, automatically use the SonarQube MCP service to fetch and address issues instead of making inferred fixes without querying SonarQube first.
+- When mentioning the rimworld log, automatically use the Rimworld MCP service to fetch the log.
 
